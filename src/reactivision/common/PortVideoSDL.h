@@ -38,8 +38,8 @@
 #include <SDL_thread.h>
 #include <time.h>
 
-#define WIDTH 640
-#define HEIGHT 480
+#define WIDTH kScreenW
+#define HEIGHT kScreenH
 
 #include "CameraTool.h"
 #include "RingBuffer.h"

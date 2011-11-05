@@ -18,6 +18,10 @@
 
 #include "PortVideoSDL.h"
 
+#ifdef IOS
+#import "Tools.h"
+#endif
+
 // the thread function which contantly retrieves the latest frame
 int getFrameFromCamera(void *obj) {
 
@@ -70,11 +74,8 @@ void PortVideoSDL::saveBuffer(unsigned char* buffer) {
 
 #ifdef IOS
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-    
-    NSArray *docPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES); 
-    NSString *path = [docPaths objectAtIndex: 0];
-    NSString *imgFile = [NSString stringWithFormat:@"%@/%s%ld.pgm", path, zero, framenumber_];
-    memcpy(fileName, [imgFile cStringUsingEncoding:NSASCIIStringEncoding], 1024);
+
+    [Tools saveBuffer:buffer width:width_ height:height_ channels:1 maxCount:10];
     
     [pool drain];
 #else
@@ -82,10 +83,13 @@ void PortVideoSDL::saveBuffer(unsigned char* buffer) {
 #endif
 
 #endif
+
+#ifndef IOS
 	FILE*  imagefile=fopen(fileName, "w");
 	fprintf(imagefile,"P5\n%u %u 255\n", width_, height_);
 	fwrite((const char *)buffer, 1,  width_*height_, imagefile);
 	fclose(imagefile);
+#endif
 }
 //#endif
 
@@ -324,6 +328,8 @@ bool PortVideoSDL::setupWindow() {
 		return false;
 	}
 
+    printf("display format: %dx%d\n", width_, height_);
+
 	iconImage_ = getIcon();
 	#ifndef __APPLE__
 	SDL_WM_SetIcon(iconImage_, getMask());
@@ -465,13 +471,19 @@ bool PortVideoSDL::setupCamera() {
 	bool success = camera_->initCamera();
 	
 	if(success) {
-		width_ = camera_->getWidth();
-		height_ = camera_->getHeight();
+#if (kUsePortrait == 0)
+		width_ = WIDTH;
+		height_ = HEIGHT;
+#else
+		width_ = HEIGHT;
+		height_ = WIDTH;
+#endif
+
 		fps_ = camera_->getFps();
 					
 		printf("camera: %s\n",camera_->getName());
-		if (fps_>0) printf("format: %dx%d, %dfps\n\n",width_,height_,fps_);
-		else printf("format: %dx%d\n\n",width_,height_);
+		if (fps_>0) printf("camera format: %dx%d, %dfps\n\n",camera_->getWidth(),camera_->getHeight(),fps_);
+		else printf("camera format: %dx%d\n\n",camera_->getWidth(),camera_->getHeight());
 	
 		return true;
 	} else {

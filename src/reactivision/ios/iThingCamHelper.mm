@@ -207,8 +207,13 @@ void iThingCamGetFrame(iThingCamState *pState, unsigned char **buf) {
 
     // allocate buffer for greyscale image
     if (camState->buffer == NULL) {
-        camState->pixelsWidth = width; 
-        camState->pixelsHeight = height;
+#if (kUsePortrait == 0)
+        camState->pixelsWidth = kScreenW; 
+        camState->pixelsHeight = kScreenH;
+#else
+        camState->pixelsWidth = kScreenH; 
+        camState->pixelsHeight = kScreenW;
+#endif
 
         camState->bufLength = camState->pixelsWidth * camState->pixelsHeight;
         camState->buffer = (unsigned char *)malloc(sizeof(unsigned char) * camState->bufLength);
@@ -217,6 +222,16 @@ void iThingCamGetFrame(iThingCamState *pState, unsigned char **buf) {
     // make grayscale
     CGColorSpaceRef grayColorSpace = CGColorSpaceCreateDeviceGray();
     CGContextRef grayContext = CGBitmapContextCreate(camState->buffer, camState->pixelsWidth, camState->pixelsHeight, 8, camState->pixelsWidth, grayColorSpace, kCGImageAlphaNone);
+    
+    // and turn around
+    // We will also have to flip the x axis
+    CGPoint ctr = CGPointMake(camState->pixelsHeight / 2.0f, camState->pixelsWidth / 2.0f);
+//    CGContextTranslateCTM(grayContext, ctr.x, ctr.y);
+//    CGContextScaleCTM(grayContext, -1.0f, 1.0f);
+    
+    // Rotate to the desired orientation
+//    CGContextTranslateCTM(grayContext, -ctr.x, ctr.y);
+//    CGContextRotateCTM (grayContext, -M_PI/ 2.0f);
     
     // Draw the image in the context
     CGContextDrawImage(grayContext, CGRectMake(0, 0, camState->pixelsWidth, camState->pixelsHeight), rgbImage);

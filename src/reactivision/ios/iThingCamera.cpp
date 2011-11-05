@@ -78,8 +78,8 @@ bool iThingCamera::initCamera() {
     
     // hardcoded until now...
     // this is for the back cam. front has 640x480
-    this->width = 1280;
-    this->height = 720;
+    this->width = kScreenW;
+    this->height = kScreenH;
     
 	
 //	if (config.device!=SETTING_AUTO) {
