@@ -12,6 +12,6 @@
 #define kScreenW 1024
 #define kScreenH 768
 
-#define kUsePortrait 1
+#define kUsePortrait 0
 
 #endif

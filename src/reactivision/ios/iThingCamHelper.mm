@@ -236,7 +236,7 @@ void iThingCamGetFrame(iThingCamState *pState, unsigned char **buf) {
     // Draw the image in the context
     CGContextDrawImage(grayContext, CGRectMake(0, 0, camState->pixelsWidth, camState->pixelsHeight), rgbImage);
     
-//    [Tools saveBuffer:camState->buffer width:camState->pixelsWidth height:camState->pixelsHeight channels:1 maxCount:10];
+    [Tools saveBuffer:camState->buffer width:camState->pixelsWidth height:camState->pixelsHeight channels:1 maxCount:10];
     
     // unlock buffer
     camState->bufLocked = 0;
