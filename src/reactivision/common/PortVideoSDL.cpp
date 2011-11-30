@@ -214,7 +214,19 @@ void PortVideoSDL::mainLoop()
 			}
 		}
 		long camera_time = currentTime();
-
+        
+#ifdef IOS
+        if (!kUsePortrait) {
+            // fixes screen rotation problems in landscape mode
+            glMatrixMode(GL_PROJECTION);
+            glLoadIdentity();
+            glMatrixMode(GL_MODELVIEW);
+            glLoadIdentity();
+            glViewport(0, 0, HEIGHT, WIDTH);
+            glRotatef(-90, 0, 0, 1);
+            glOrthof(0.0, (GLfloat) WIDTH, (GLfloat)HEIGHT, 0.0, 400, -400);
+        }
+#endif
 		
 		//memcpy(sourceBuffer_,cameraReadBuffer,ringBuffer->size());
 		//ringBuffer->readFinished();

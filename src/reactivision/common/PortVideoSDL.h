@@ -38,6 +38,12 @@
 #include <SDL_thread.h>
 #include <time.h>
 
+#ifdef IOS
+#import <OpenGLES/EAGL.h>
+#import <OpenGLES/ES1/gl.h>
+#import <OpenGLES/ES1/glext.h>
+#endif
+
 #define WIDTH kScreenW
 #define HEIGHT kScreenH
 
