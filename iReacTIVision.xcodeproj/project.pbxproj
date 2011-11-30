@@ -228,7 +228,7 @@
 		FDB652C60E43E25900F688B5 /* kromasky_16x16.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = kromasky_16x16.bmp; sourceTree = "<group>"; };
 		FDB96ED30DEFC9C700FAF19F /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		FDB96EDF0DEFC9DC00FAF19F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		FDC202EE0E107B1200ABAC90 /* Touch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Touch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FDC202EE0E107B1200ABAC90 /* iReacTIVision.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iReacTIVision.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDF0D71D0E12D2AB00247964 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		FDF0D7220E12D31800247964 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -258,7 +258,7 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FDC202EE0E107B1200ABAC90 /* Touch.app */,
+				FDC202EE0E107B1200ABAC90 /* iReacTIVision.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -566,9 +566,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		FDC202DD0E107B1200ABAC90 /* Touch */ = {
+		FDC202DD0E107B1200ABAC90 /* iReacTIVision */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FDC202EB0E107B1200ABAC90 /* Build configuration list for PBXNativeTarget "Touch" */;
+			buildConfigurationList = FDC202EB0E107B1200ABAC90 /* Build configuration list for PBXNativeTarget "iReacTIVision" */;
 			buildPhases = (
 				FDC202DE0E107B1200ABAC90 /* Resources */,
 				FDC202E20E107B1200ABAC90 /* Sources */,
@@ -578,9 +578,9 @@
 			);
 			dependencies = (
 			);
-			name = Touch;
+			name = iReacTIVision;
 			productName = Accelerometer;
-			productReference = FDC202EE0E107B1200ABAC90 /* Touch.app */;
+			productReference = FDC202EE0E107B1200ABAC90 /* iReacTIVision.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -588,7 +588,7 @@
 /* Begin PBXProject section */
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
-			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "DemosiPhoneOS" */;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "iReacTIVision" */;
 			compatibilityVersion = "Xcode 3.1";
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
@@ -602,7 +602,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				FDC202DD0E107B1200ABAC90 /* Touch */,
+				FDC202DD0E107B1200ABAC90 /* iReacTIVision */,
 			);
 		};
 /* End PBXProject section */
@@ -763,7 +763,7 @@
 					"\"$(SRCROOT)/lib/sdl/armv7\"",
 				);
 				PREBINDING = NO;
-				PRODUCT_NAME = Touch;
+				PRODUCT_NAME = iReacTIVision;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -787,7 +787,7 @@
 					"\"$(SRCROOT)/lib/sdl/armv7\"",
 				);
 				PREBINDING = NO;
-				PRODUCT_NAME = Touch;
+				PRODUCT_NAME = iReacTIVision;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
 			};
@@ -796,7 +796,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "DemosiPhoneOS" */ = {
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "iReacTIVision" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,
@@ -805,7 +805,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FDC202EB0E107B1200ABAC90 /* Build configuration list for PBXNativeTarget "Touch" */ = {
+		FDC202EB0E107B1200ABAC90 /* Build configuration list for PBXNativeTarget "iReacTIVision" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FDC202EC0E107B1200ABAC90 /* Debug */,

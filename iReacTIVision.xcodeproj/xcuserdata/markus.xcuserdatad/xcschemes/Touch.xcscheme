@@ -13,10 +13,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "FD5F9BE30E0DEBEA008E885B"
-               BuildableName = "Accel.app"
-               BlueprintName = "Accel"
-               ReferencedContainer = "container:DemosiPhoneOS.xcodeproj">
+               BlueprintIdentifier = "FDC202DD0E107B1200ABAC90"
+               BuildableName = "iReacTIVision.app"
+               BlueprintName = "iReacTIVision"
+               ReferencedContainer = "container:iReacTIVision.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -31,10 +31,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "FD5F9BE30E0DEBEA008E885B"
-            BuildableName = "Accel.app"
-            BlueprintName = "Accel"
-            ReferencedContainer = "container:DemosiPhoneOS.xcodeproj">
+            BlueprintIdentifier = "FDC202DD0E107B1200ABAC90"
+            BuildableName = "iReacTIVision.app"
+            BlueprintName = "iReacTIVision"
+            ReferencedContainer = "container:iReacTIVision.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -45,14 +45,15 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Debug"
       debugDocumentVersioning = "YES"
+      enablesOpenGLESFrameCapture = "YES"
       allowLocationSimulation = "YES">
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "FD5F9BE30E0DEBEA008E885B"
-            BuildableName = "Accel.app"
-            BlueprintName = "Accel"
-            ReferencedContainer = "container:DemosiPhoneOS.xcodeproj">
+            BlueprintIdentifier = "FDC202DD0E107B1200ABAC90"
+            BuildableName = "iReacTIVision.app"
+            BlueprintName = "iReacTIVision"
+            ReferencedContainer = "container:iReacTIVision.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -67,10 +68,10 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "FD5F9BE30E0DEBEA008E885B"
-            BuildableName = "Accel.app"
-            BlueprintName = "Accel"
-            ReferencedContainer = "container:DemosiPhoneOS.xcodeproj">
+            BlueprintIdentifier = "FDC202DD0E107B1200ABAC90"
+            BuildableName = "iReacTIVision.app"
+            BlueprintName = "iReacTIVision"
+            ReferencedContainer = "container:iReacTIVision.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
