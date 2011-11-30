@@ -748,7 +748,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Markus Konrad (S425H7793T)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -764,6 +764,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = iReacTIVision;
+				PROVISIONING_PROFILE = "4613A38A-15C2-47BF-BE25-76979C9C7CBE";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -772,7 +773,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Markus Konrad (S425H7793T)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
@@ -788,6 +789,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = iReacTIVision;
+				PROVISIONING_PROFILE = "4613A38A-15C2-47BF-BE25-76979C9C7CBE";
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
 			};
