@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2842E30814EC1104005E5D01 /* ControlsView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2842E30714EC1104005E5D01 /* ControlsView.mm */; };
 		2870D99C1465AF6300CF8299 /* camera.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2870D99A1465AF6300CF8299 /* camera.xml */; };
 		2870D99D1465AF6300CF8299 /* reacTIVision.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2870D99B1465AF6300CF8299 /* reacTIVision.xml */; };
 		2870DA491465AF8700CF8299 /* CalibrationEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2870D9A01465AF8700CF8299 /* CalibrationEngine.cpp */; };
@@ -85,6 +86,8 @@
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623EB0D0F72F000981E51 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		2842E30614EC1104005E5D01 /* ControlsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlsView.h; sourceTree = "<group>"; };
+		2842E30714EC1104005E5D01 /* ControlsView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ControlsView.mm; sourceTree = "<group>"; };
 		2870D99A1465AF6300CF8299 /* camera.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = camera.xml; sourceTree = "<group>"; };
 		2870D99B1465AF6300CF8299 /* reacTIVision.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = reacTIVision.xml; sourceTree = "<group>"; };
 		2870D9A01465AF8700CF8299 /* CalibrationEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CalibrationEngine.cpp; sourceTree = "<group>"; };
@@ -337,6 +340,8 @@
 				2870D9D71465AF8700CF8299 /* iThingCamHelper.mm */,
 				2870D9D81465AF8700CF8299 /* Tools.h */,
 				2870D9D91465AF8700CF8299 /* Tools.mm */,
+				2842E30614EC1104005E5D01 /* ControlsView.h */,
+				2842E30714EC1104005E5D01 /* ControlsView.mm */,
 			);
 			path = ios;
 			sourceTree = "<group>";
@@ -683,6 +688,7 @@
 				2870DA931465AF8800CF8299 /* tinyxml.cpp in Sources */,
 				2870DA941465AF8800CF8299 /* tinyxmlerror.cpp in Sources */,
 				2870DA951465AF8800CF8299 /* tinyxmlparser.cpp in Sources */,
+				2842E30814EC1104005E5D01 /* ControlsView.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -748,7 +754,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Markus Konrad (S425H7793T)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Markus Konrad (7V9JZAY8TZ)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -764,7 +770,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = iReacTIVision;
-				PROVISIONING_PROFILE = "4613A38A-15C2-47BF-BE25-76979C9C7CBE";
+				PROVISIONING_PROFILE = "FEEA8E1C-CBAC-43C9-B8E6-209AEF21AA44";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -773,7 +779,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Markus Konrad (S425H7793T)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Markus Konrad (7V9JZAY8TZ)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
@@ -789,7 +795,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = iReacTIVision;
-				PROVISIONING_PROFILE = "4613A38A-15C2-47BF-BE25-76979C9C7CBE";
+				PROVISIONING_PROFILE = "FEEA8E1C-CBAC-43C9-B8E6-209AEF21AA44";
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
 			};

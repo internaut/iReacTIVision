@@ -98,9 +98,7 @@ void PortVideoSDL::stop() {
 	error_=false;
 }
 
-// the principal program sequence
-void PortVideoSDL::run() {
-
+void PortVideoSDL::init() {
 	if( !setupCamera() ) {
 		if( !setupWindow() ) return;
 		showError("No camera found!");
@@ -112,7 +110,10 @@ void PortVideoSDL::run() {
 
 	allocateBuffers();
 	initFrameProcessors();
+}
 
+// the principal program sequence
+void PortVideoSDL::run() {
 	bool success = camera_->startCamera();
 
 	if( success ){

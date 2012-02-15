@@ -9,11 +9,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "src/reactivision/common/PortVideoSDL.cpp"
-         timestampString = "344365217.948181"
+         timestampString = "351032227.787933"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "525"
-         endingLineNumber = "525"
+         startingLineNumber = "526"
+         endingLineNumber = "526"
          landmarkName = "PortVideoSDL::allocateBuffers()"
          landmarkType = "5">
       </FileBreakpoint>

@@ -20,6 +20,13 @@
 #include <signal.h>
 #endif
 
+#ifdef IOS
+#include <SDL.h>
+#include <SDL_video.h>
+#include <SDL_syswm.h>
+#import "ControlsView.h"
+#endif
+
 PortVideoSDL *engine;
 
 static void terminate (int param)
@@ -331,8 +338,8 @@ int main(int argc, char *argv[]) {
 	switch (config.display_mode) {
 		case 0: engine->setDisplayMode(engine->NO_DISPLAY); break;
 		case 1: engine->setDisplayMode(engine->SOURCE_DISPLAY); break;
-		case 2: engine->setDisplayMode(engine->SOURCE_DISPLAY); break;
-//		case 2: engine->setDisplayMode(engine->DEST_DISPLAY); break;
+//		case 2: engine->setDisplayMode(engine->SOURCE_DISPLAY); break;
+		case 2: engine->setDisplayMode(engine->DEST_DISPLAY); break;
 	}
 		
 	MessageServer  *server		= NULL;
@@ -346,7 +353,7 @@ int main(int argc, char *argv[]) {
         server = new MidiServer(config.midi_config);
 #else
         server = NULL;
-        std::cout << "MIDIServer support is not compiled into this binary!"<< std::endl;
+        std::cerr << "MIDIServer support is not compiled into this binary!"<< std::endl;
 #endif
     }
 	else server = new TuioServer(config.host,config.port);
@@ -368,6 +375,17 @@ int main(int argc, char *argv[]) {
 	calibrator = new CalibrationEngine(config.grid_config);
 	//if (config.amoeba) ((CalibrationEngine*)calibrator)->activateAutoCalibration((FidtrackFinder*)fiducialfinder);
 	engine->addFrameProcessor(calibrator);
+
+    engine->init();
+
+#ifdef IOS
+    ControlsView *controlsView = [[[ControlsView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)] autorelease];
+    UIApplication *uiApp = [UIApplication sharedApplication];
+    UIWindow *uiWin = [uiApp.windows objectAtIndex:0];
+    UIViewController *uiRootViewCtrl = uiWin.rootViewController;
+    UIView *uiRootView = uiRootViewCtrl.view;
+    [uiRootView addSubview:controlsView];
+#endif
 
 	engine->run();
 		

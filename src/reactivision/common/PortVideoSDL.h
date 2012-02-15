@@ -61,6 +61,7 @@ public:
 	PortVideoSDL(const char* name, bool background, const char* camera_config);
 	~PortVideoSDL() {};
 	
+    void init();
 	void run();
 	void stop();
     
