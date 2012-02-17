@@ -10,8 +10,14 @@
 
 #include "PortVideoSDL.h"
 
-@interface ControlsView : UIView {
+typedef enum {
+    kCtrlViewModeDefault = 0,
+    kCtrlViewModeCalib
+} ctrlViewMode;
 
+@interface ControlsView : UIView {
+    ctrlViewMode viewMode;
+    UIView *calibView;
 }
 
 @property (nonatomic,assign) PortVideoSDL *videoEngine;

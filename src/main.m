@@ -379,7 +379,7 @@ int main(int argc, char *argv[]) {
     engine->init();
 
 #ifdef IOS
-    ControlsView *controlsView = [[[ControlsView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)] autorelease];
+    ControlsView *controlsView = [[[ControlsView alloc] init] autorelease];
     UIApplication *uiApp = [UIApplication sharedApplication];
     UIWindow *uiWin = [uiApp.windows objectAtIndex:0];
     UIViewController *uiRootViewCtrl = uiWin.rootViewController;

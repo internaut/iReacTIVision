@@ -38,7 +38,13 @@ CalibrationEngine::CalibrationEngine(const char* out) {
 		CFStringGetCString( cfStringRef, path, 1024, kCFStringEncodingASCII);	
 		CFRelease( mainBundleURL);
 		CFRelease( cfStringRef);
-		sprintf(full_path,"%s/Contents/Resources/calibration.grid",path);
+
+#ifndef IOS
+		sprintf(full_path,"%s/Contents/Resources/calibration.grid",path);        
+#else
+		sprintf(full_path,"%s/calibration.grid",path);        
+#endif
+
 		calib_out = full_path;
 #else
 		calib_out = "./calibration.grid";
