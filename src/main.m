@@ -21,10 +21,14 @@
 #endif
 
 #ifdef IOS
+
 #include <SDL.h>
 #include <SDL_video.h>
 #include <SDL_syswm.h>
+
 #import "ControlsView.h"
+#import "TUIOMessageListener.h"
+
 #endif
 
 PortVideoSDL *engine;
@@ -385,6 +389,8 @@ int main(int argc, char *argv[]) {
     UIViewController *uiRootViewCtrl = uiWin.rootViewController;
     UIView *uiRootView = uiRootViewCtrl.view;
     [uiRootView addSubview:controlsView];
+    
+    TUIOMessageListener *tuioListener = [[[TUIOMessageListener alloc] init] autorelease];
 #endif
 
 	engine->run();
