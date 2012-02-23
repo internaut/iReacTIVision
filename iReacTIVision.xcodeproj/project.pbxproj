@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2804B69F14F55E27009CDE7B /* TUIOMessageListener.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2804B69E14F55E27009CDE7B /* TUIOMessageListener.mm */; };
-		2804B6A514F55FAE009CDE7B /* AsyncUdpSocket.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2804B6A414F55FAE009CDE7B /* AsyncUdpSocket.mm */; };
-		2804B6A714F55FE6009CDE7B /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2804B6A614F55FE6009CDE7B /* CFNetwork.framework */; };
 		2842E30814EC1104005E5D01 /* ControlsView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2842E30714EC1104005E5D01 /* ControlsView.mm */; };
 		2870D99C1465AF6300CF8299 /* camera.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2870D99A1465AF6300CF8299 /* camera.xml */; };
 		2870D99D1465AF6300CF8299 /* reacTIVision.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2870D99B1465AF6300CF8299 /* reacTIVision.xml */; };
@@ -89,11 +86,6 @@
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623EB0D0F72F000981E51 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		2804B69D14F55E27009CDE7B /* TUIOMessageListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TUIOMessageListener.h; sourceTree = "<group>"; };
-		2804B69E14F55E27009CDE7B /* TUIOMessageListener.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TUIOMessageListener.mm; sourceTree = "<group>"; };
-		2804B6A314F55FAE009CDE7B /* AsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncUdpSocket.h; sourceTree = "<group>"; };
-		2804B6A414F55FAE009CDE7B /* AsyncUdpSocket.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AsyncUdpSocket.mm; sourceTree = "<group>"; };
-		2804B6A614F55FE6009CDE7B /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		2842E30614EC1104005E5D01 /* ControlsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlsView.h; sourceTree = "<group>"; };
 		2842E30714EC1104005E5D01 /* ControlsView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ControlsView.mm; sourceTree = "<group>"; };
 		2870D99A1465AF6300CF8299 /* camera.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = camera.xml; sourceTree = "<group>"; };
@@ -249,7 +241,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2804B6A714F55FE6009CDE7B /* CFNetwork.framework in Frameworks */,
 				2870DAA21465C2E800CF8299 /* AVFoundation.framework in Frameworks */,
 				2870DAA01465C2AE00CF8299 /* CoreVideo.framework in Frameworks */,
 				2870DA9E1465C2A400CF8299 /* CoreMedia.framework in Frameworks */,
@@ -273,23 +264,6 @@
 				FDC202EE0E107B1200ABAC90 /* iReacTIVision.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		2804B6A114F55FAE009CDE7B /* contrib */ = {
-			isa = PBXGroup;
-			children = (
-				2804B6A214F55FAE009CDE7B /* CocoaAsyncSocket */,
-			);
-			path = contrib;
-			sourceTree = "<group>";
-		};
-		2804B6A214F55FAE009CDE7B /* CocoaAsyncSocket */ = {
-			isa = PBXGroup;
-			children = (
-				2804B6A314F55FAE009CDE7B /* AsyncUdpSocket.h */,
-				2804B6A414F55FAE009CDE7B /* AsyncUdpSocket.mm */,
-			);
-			path = CocoaAsyncSocket;
 			sourceTree = "<group>";
 		};
 		2870D99E1465AF8700CF8299 /* reactivision */ = {
@@ -368,8 +342,6 @@
 				2870D9D91465AF8700CF8299 /* Tools.mm */,
 				2842E30614EC1104005E5D01 /* ControlsView.h */,
 				2842E30714EC1104005E5D01 /* ControlsView.mm */,
-				2804B69D14F55E27009CDE7B /* TUIOMessageListener.h */,
-				2804B69E14F55E27009CDE7B /* TUIOMessageListener.mm */,
 			);
 			path = ios;
 			sourceTree = "<group>";
@@ -536,7 +508,6 @@
 			isa = PBXGroup;
 			children = (
 				2870DA971465B55B00CF8299 /* libSDL.a */,
-				2804B6A614F55FE6009CDE7B /* CFNetwork.framework */,
 				2870DAA11465C2E700CF8299 /* AVFoundation.framework */,
 				2870DA9F1465C2AE00CF8299 /* CoreVideo.framework */,
 				2870DA9D1465C2A400CF8299 /* CoreMedia.framework */,
@@ -554,7 +525,6 @@
 		FD77A0040E26BC0500F39101 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				2804B6A114F55FAE009CDE7B /* contrib */,
 				2870D99E1465AF8700CF8299 /* reactivision */,
 				2870DA961465B05F00CF8299 /* prefix.pch */,
 				2870DAB31465D18400CF8299 /* config.h */,
@@ -719,8 +689,6 @@
 				2870DA941465AF8800CF8299 /* tinyxmlerror.cpp in Sources */,
 				2870DA951465AF8800CF8299 /* tinyxmlparser.cpp in Sources */,
 				2842E30814EC1104005E5D01 /* ControlsView.mm in Sources */,
-				2804B69F14F55E27009CDE7B /* TUIOMessageListener.mm in Sources */,
-				2804B6A514F55FAE009CDE7B /* AsyncUdpSocket.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
