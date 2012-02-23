@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		28400B3D14F6733F0028C19C /* TUIOMsgListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 28400B3C14F6733F0028C19C /* TUIOMsgListener.cpp */; };
+		28400B4014F675910028C19C /* TUIFrontendCore.mm in Sources */ = {isa = PBXBuildFile; fileRef = 28400B3F14F675910028C19C /* TUIFrontendCore.mm */; };
 		2842E30814EC1104005E5D01 /* ControlsView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2842E30714EC1104005E5D01 /* ControlsView.mm */; };
 		2870D99C1465AF6300CF8299 /* camera.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2870D99A1465AF6300CF8299 /* camera.xml */; };
 		2870D99D1465AF6300CF8299 /* reacTIVision.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2870D99B1465AF6300CF8299 /* reacTIVision.xml */; };
@@ -86,6 +88,11 @@
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623EB0D0F72F000981E51 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		28400B3B14F6707E0028C19C /* TUIOMsgListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TUIOMsgListener.h; sourceTree = "<group>"; };
+		28400B3C14F6733F0028C19C /* TUIOMsgListener.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TUIOMsgListener.cpp; sourceTree = "<group>"; };
+		28400B3E14F675910028C19C /* TUIFrontendCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TUIFrontendCore.h; sourceTree = "<group>"; };
+		28400B3F14F675910028C19C /* TUIFrontendCore.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TUIFrontendCore.mm; sourceTree = "<group>"; };
+		28400B4714F6760B0028C19C /* Singleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Singleton.h; sourceTree = "<group>"; };
 		2842E30614EC1104005E5D01 /* ControlsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlsView.h; sourceTree = "<group>"; };
 		2842E30714EC1104005E5D01 /* ControlsView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ControlsView.mm; sourceTree = "<group>"; };
 		2870D99A1465AF6300CF8299 /* camera.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = camera.xml; sourceTree = "<group>"; };
@@ -264,6 +271,42 @@
 				FDC202EE0E107B1200ABAC90 /* iReacTIVision.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		28400B3714F66FBD0028C19C /* frontend */ = {
+			isa = PBXGroup;
+			children = (
+				28400B3914F66FEA0028C19C /* ctrl */,
+				28400B3A14F66FEA0028C19C /* gui */,
+				28400B4114F675D60028C19C /* util */,
+			);
+			path = frontend;
+			sourceTree = "<group>";
+		};
+		28400B3914F66FEA0028C19C /* ctrl */ = {
+			isa = PBXGroup;
+			children = (
+				28400B3B14F6707E0028C19C /* TUIOMsgListener.h */,
+				28400B3C14F6733F0028C19C /* TUIOMsgListener.cpp */,
+				28400B3E14F675910028C19C /* TUIFrontendCore.h */,
+				28400B3F14F675910028C19C /* TUIFrontendCore.mm */,
+			);
+			path = ctrl;
+			sourceTree = "<group>";
+		};
+		28400B3A14F66FEA0028C19C /* gui */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = gui;
+			sourceTree = "<group>";
+		};
+		28400B4114F675D60028C19C /* util */ = {
+			isa = PBXGroup;
+			children = (
+				28400B4714F6760B0028C19C /* Singleton.h */,
+			);
+			path = util;
 			sourceTree = "<group>";
 		};
 		2870D99E1465AF8700CF8299 /* reactivision */ = {
@@ -525,6 +568,7 @@
 		FD77A0040E26BC0500F39101 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				28400B3714F66FBD0028C19C /* frontend */,
 				2870D99E1465AF8700CF8299 /* reactivision */,
 				2870DA961465B05F00CF8299 /* prefix.pch */,
 				2870DAB31465D18400CF8299 /* config.h */,
@@ -689,6 +733,8 @@
 				2870DA941465AF8800CF8299 /* tinyxmlerror.cpp in Sources */,
 				2870DA951465AF8800CF8299 /* tinyxmlparser.cpp in Sources */,
 				2842E30814EC1104005E5D01 /* ControlsView.mm in Sources */,
+				28400B3D14F6733F0028C19C /* TUIOMsgListener.cpp in Sources */,
+				28400B4014F675910028C19C /* TUIFrontendCore.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

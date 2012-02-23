@@ -25,6 +25,7 @@
 #include <SDL_video.h>
 #include <SDL_syswm.h>
 #import "ControlsView.h"
+#import "TUIFrontendCore.h"
 #endif
 
 PortVideoSDL *engine;
@@ -385,9 +386,16 @@ int main(int argc, char *argv[]) {
     UIViewController *uiRootViewCtrl = uiWin.rootViewController;
     UIView *uiRootView = uiRootViewCtrl.view;
     [uiRootView addSubview:controlsView];
+    
+    TUIFrontendCore *frontendCore = [TUIFrontendCore shared];
+    [frontendCore start];
 #endif
 
 	engine->run();
+    
+#ifdef IOS
+    [frontendCore destroy];
+#endif
 		
 	config.display_mode = engine->getDisplayMode();
 	
