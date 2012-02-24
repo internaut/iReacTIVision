@@ -71,6 +71,8 @@
 		2870DA9E1465C2A400CF8299 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2870DA9D1465C2A400CF8299 /* CoreMedia.framework */; };
 		2870DAA01465C2AE00CF8299 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2870DA9F1465C2AE00CF8299 /* CoreVideo.framework */; };
 		2870DAA21465C2E800CF8299 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2870DAA11465C2E700CF8299 /* AVFoundation.framework */; };
+		28E804F014F82261001022E8 /* TUIObject.mm in Sources */ = {isa = PBXBuildFile; fileRef = 28E804EF14F82260001022E8 /* TUIObject.mm */; };
+		28E804F914F84BE7001022E8 /* AudioController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 28E804F814F84BE7001022E8 /* AudioController.mm */; };
 		FD77A0230E26BC0500F39101 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FD77A00B0E26BC0500F39101 /* main.m */; };
 		FD787AA40E22A5CC003E8E36 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = FD787AA00E22A5CC003E8E36 /* Default.png */; };
 		FDB651D30E43D1BA00F688B5 /* stroke.bmp in Resources */ = {isa = PBXBuildFile; fileRef = FDB651CF0E43D19800F688B5 /* stroke.bmp */; };
@@ -222,6 +224,11 @@
 		2870DA9F1465C2AE00CF8299 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		2870DAA11465C2E700CF8299 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		2870DAB31465D18400CF8299 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
+		28E804EE14F82260001022E8 /* TUIObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TUIObject.h; sourceTree = "<group>"; };
+		28E804EF14F82260001022E8 /* TUIObject.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TUIObject.mm; sourceTree = "<group>"; };
+		28E804F214F8228C001022E8 /* TUIObjectObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TUIObjectObserver.h; sourceTree = "<group>"; };
+		28E804F514F84A9C001022E8 /* AudioController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioController.h; sourceTree = "<group>"; };
+		28E804F814F84BE7001022E8 /* AudioController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AudioController.mm; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FD77A00B0E26BC0500F39101 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FD787AA00E22A5CC003E8E36 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -276,6 +283,7 @@
 		28400B3714F66FBD0028C19C /* frontend */ = {
 			isa = PBXGroup;
 			children = (
+				28E804F414F84A4E001022E8 /* audio */,
 				28400B3914F66FEA0028C19C /* ctrl */,
 				28400B3A14F66FEA0028C19C /* gui */,
 				28400B4114F675D60028C19C /* util */,
@@ -290,6 +298,9 @@
 				28400B3C14F6733F0028C19C /* TUIOMsgListener.cpp */,
 				28400B3E14F675910028C19C /* TUIFrontendCore.h */,
 				28400B3F14F675910028C19C /* TUIFrontendCore.mm */,
+				28E804EE14F82260001022E8 /* TUIObject.h */,
+				28E804EF14F82260001022E8 /* TUIObject.mm */,
+				28E804F214F8228C001022E8 /* TUIObjectObserver.h */,
 			);
 			path = ctrl;
 			sourceTree = "<group>";
@@ -525,6 +536,15 @@
 			path = tinyxml;
 			sourceTree = "<group>";
 		};
+		28E804F414F84A4E001022E8 /* audio */ = {
+			isa = PBXGroup;
+			children = (
+				28E804F514F84A9C001022E8 /* AudioController.h */,
+				28E804F814F84BE7001022E8 /* AudioController.mm */,
+			);
+			path = audio;
+			sourceTree = "<group>";
+		};
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
@@ -735,6 +755,8 @@
 				2842E30814EC1104005E5D01 /* ControlsView.mm in Sources */,
 				28400B3D14F6733F0028C19C /* TUIOMsgListener.cpp in Sources */,
 				28400B4014F675910028C19C /* TUIFrontendCore.mm in Sources */,
+				28E804F014F82261001022E8 /* TUIObject.mm in Sources */,
+				28E804F914F84BE7001022E8 /* AudioController.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -806,6 +828,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = src/prefix.pch;
+				"GCC_PREPROCESSOR_DEFINITIONS[arch=*]" = DEBUG;
 				GCC_VERSION = "";
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";

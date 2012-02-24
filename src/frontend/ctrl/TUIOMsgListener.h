@@ -72,7 +72,7 @@ typedef struct _TUIOMsg {
     };
 } TUIOMsg;
 
-typedef void(*TUIOMsgCallback)(TUIOMsg);
+typedef void(*TUIOMsgCallback)(TUIOMsg *);
 
 class TUIOMsgListener : public osc::OscPacketListener {
 
