@@ -4,7 +4,7 @@
    version = "1.0">
    <FileBreakpoints>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
@@ -42,6 +42,76 @@
          endingLineNumber = "21"
          landmarkName = "port"
          landmarkType = "19">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "src/frontend/ctrl/TUIOMsgListener.cpp"
+         timestampString = "351805193.062244"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "99"
+         endingLineNumber = "99"
+         landmarkName = "TUIOMsgListener::ProcessMessage(const osc::ReceivedMessage &amp;m, const IpEndpointName &amp;remoteEndpoint)"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "src/frontend/ctrl/TUIOMsgListener.cpp"
+         timestampString = "351805193.062244"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "148"
+         endingLineNumber = "148"
+         landmarkName = "TUIOMsgListener::ProcessMessage(const osc::ReceivedMessage &amp;m, const IpEndpointName &amp;remoteEndpoint)"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "src/frontend/ctrl/TUIOMsgListener.cpp"
+         timestampString = "351805193.062244"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "145"
+         endingLineNumber = "145"
+         landmarkName = "TUIOMsgListener::ProcessMessage(const osc::ReceivedMessage &amp;m, const IpEndpointName &amp;remoteEndpoint)"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "src/frontend/ctrl/TUIOMsgListener.cpp"
+         timestampString = "351805193.062244"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "146"
+         endingLineNumber = "146"
+         landmarkName = "TUIOMsgListener::ProcessMessage(const osc::ReceivedMessage &amp;m, const IpEndpointName &amp;remoteEndpoint)"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "src/frontend/ctrl/TUIOMsgListener.cpp"
+         timestampString = "351804809.5332"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "50"
+         endingLineNumber = "50"
+         landmarkName = "TUIOMsgListener::ProcessMessage(const osc::ReceivedMessage &amp;m, const IpEndpointName &amp;remoteEndpoint)"
+         landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
 </Bucket>
