@@ -10,6 +10,8 @@
 		28400B3D14F6733F0028C19C /* TUIOMsgListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 28400B3C14F6733F0028C19C /* TUIOMsgListener.cpp */; };
 		28400B4014F675910028C19C /* TUIFrontendCore.mm in Sources */ = {isa = PBXBuildFile; fileRef = 28400B3F14F675910028C19C /* TUIFrontendCore.mm */; };
 		2842E30814EC1104005E5D01 /* ControlsView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2842E30714EC1104005E5D01 /* ControlsView.mm */; };
+		28476D5E14F92BD6002DCFB0 /* KashrutGame.mm in Sources */ = {isa = PBXBuildFile; fileRef = 28476D5D14F92BD6002DCFB0 /* KashrutGame.mm */; };
+		28476D6114F92CC6002DCFB0 /* KashrutFoodObject.mm in Sources */ = {isa = PBXBuildFile; fileRef = 28476D6014F92CC6002DCFB0 /* KashrutFoodObject.mm */; };
 		2870D99C1465AF6300CF8299 /* camera.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2870D99A1465AF6300CF8299 /* camera.xml */; };
 		2870D99D1465AF6300CF8299 /* reacTIVision.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2870D99B1465AF6300CF8299 /* reacTIVision.xml */; };
 		2870DA491465AF8700CF8299 /* CalibrationEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2870D9A01465AF8700CF8299 /* CalibrationEngine.cpp */; };
@@ -97,6 +99,11 @@
 		28400B4714F6760B0028C19C /* Singleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Singleton.h; sourceTree = "<group>"; };
 		2842E30614EC1104005E5D01 /* ControlsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlsView.h; sourceTree = "<group>"; };
 		2842E30714EC1104005E5D01 /* ControlsView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ControlsView.mm; sourceTree = "<group>"; };
+		28476D5C14F92BD6002DCFB0 /* KashrutGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KashrutGame.h; sourceTree = "<group>"; };
+		28476D5D14F92BD6002DCFB0 /* KashrutGame.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = KashrutGame.mm; sourceTree = "<group>"; };
+		28476D5F14F92CC6002DCFB0 /* KashrutFoodObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KashrutFoodObject.h; sourceTree = "<group>"; };
+		28476D6014F92CC6002DCFB0 /* KashrutFoodObject.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = KashrutFoodObject.mm; sourceTree = "<group>"; };
+		28476D6214F937C0002DCFB0 /* KashrutGameTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KashrutGameTypes.h; sourceTree = "<group>"; };
 		2870D99A1465AF6300CF8299 /* camera.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = camera.xml; sourceTree = "<group>"; };
 		2870D99B1465AF6300CF8299 /* reacTIVision.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = reacTIVision.xml; sourceTree = "<group>"; };
 		2870D9A01465AF8700CF8299 /* CalibrationEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CalibrationEngine.cpp; sourceTree = "<group>"; };
@@ -283,6 +290,7 @@
 		28400B3714F66FBD0028C19C /* frontend */ = {
 			isa = PBXGroup;
 			children = (
+				28476D5A14F92BC4002DCFB0 /* kashrutgame */,
 				28E804F414F84A4E001022E8 /* audio */,
 				28400B3914F66FEA0028C19C /* ctrl */,
 				28400B3A14F66FEA0028C19C /* gui */,
@@ -318,6 +326,18 @@
 				28400B4714F6760B0028C19C /* Singleton.h */,
 			);
 			path = util;
+			sourceTree = "<group>";
+		};
+		28476D5A14F92BC4002DCFB0 /* kashrutgame */ = {
+			isa = PBXGroup;
+			children = (
+				28476D5C14F92BD6002DCFB0 /* KashrutGame.h */,
+				28476D5D14F92BD6002DCFB0 /* KashrutGame.mm */,
+				28476D5F14F92CC6002DCFB0 /* KashrutFoodObject.h */,
+				28476D6014F92CC6002DCFB0 /* KashrutFoodObject.mm */,
+				28476D6214F937C0002DCFB0 /* KashrutGameTypes.h */,
+			);
+			path = kashrutgame;
 			sourceTree = "<group>";
 		};
 		2870D99E1465AF8700CF8299 /* reactivision */ = {
@@ -757,6 +777,8 @@
 				28400B4014F675910028C19C /* TUIFrontendCore.mm in Sources */,
 				28E804F014F82261001022E8 /* TUIObject.mm in Sources */,
 				28E804F914F84BE7001022E8 /* AudioController.mm in Sources */,
+				28476D5E14F92BD6002DCFB0 /* KashrutGame.mm in Sources */,
+				28476D6114F92CC6002DCFB0 /* KashrutFoodObject.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

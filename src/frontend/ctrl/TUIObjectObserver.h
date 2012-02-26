@@ -14,7 +14,12 @@
 
 -(void)addedTUIObject:(TUIObject *)obj;
 
--(void)updatedTUIObject:(TUIObject *)obj velocityVec:(CGPoint)vel rotationVelocity:(float)rot motionAccel:(float)motAcc rotationAccel:(float)rotAccel;
+-(void)updatedTUIObject:(TUIObject *)obj
+            velocityVec:(CGPoint)vel
+       rotationVelocity:(float)rot
+            motionAccel:(float)motAcc
+          rotationAccel:(float)rotAccel
+        justInitialized:(BOOL)justInitialized;
 
 -(void)removedTUIObject:(TUIObject *)obj;
 

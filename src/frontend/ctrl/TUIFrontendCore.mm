@@ -9,6 +9,7 @@
 #import "TUIFrontendCore.h"
 
 #import "AudioController.h"
+#import "KashrutGame.h"
 
 // this callback is called from TUIOMsgListener upon TUIO message receive
 void TUIOMsgCallbackFunction(TUIOMsg *msg) {
@@ -44,9 +45,13 @@ void TUIOMsgCallbackFunction(TUIOMsg *msg) {
         tuiObjectObservers = [[NSMutableSet alloc] init];
         
         // set observers
-        AudioController *audioCtrl = [[[AudioController alloc] init] autorelease];
-        [audioCtrl setCore:self];
-        [self addTUIObjectObserver:audioCtrl];
+//        AudioController *audioCtrl = [[[AudioController alloc] init] autorelease];
+//        [audioCtrl setCore:self];
+//        [self addTUIObjectObserver:audioCtrl];
+
+        KashrutGame *kashrutGame = [[[KashrutGame alloc] init] autorelease];
+        [kashrutGame setCore:self];
+        [self addTUIObjectObserver:kashrutGame];
     }
 
     return self;
@@ -143,8 +148,14 @@ void TUIOMsgCallbackFunction(TUIOMsg *msg) {
         
         if (obj) {
             // update the object's properties
-            [obj setInitialized:YES];
-            [obj setClassId:msg->data.set.classId];
+            BOOL justInitialized = NO;
+            
+            if (!obj.initialized && msg->data.set.classId != 0) {
+                [obj setInitialized:YES];
+                justInitialized = YES;
+                [obj setClassId:msg->data.set.classId];
+            }
+
             [obj setPos:CGPointMake(msg->data.set.pos.x, msg->data.set.pos.y)];
             [obj setAngle:msg->data.set.angle];
             
@@ -154,7 +165,8 @@ void TUIOMsgCallbackFunction(TUIOMsg *msg) {
                                velocityVec:CGPointMake(msg->data.set.vel.x, msg->data.set.vel.y)
                           rotationVelocity:msg->data.set.angleVel
                                motionAccel:msg->data.set.motAccel
-                             rotationAccel:msg->data.set.rotAccel];
+                             rotationAccel:msg->data.set.rotAccel
+                           justInitialized:justInitialized];
             }
         }
     }
