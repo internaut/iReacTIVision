@@ -64,7 +64,7 @@ bool iThingCamera::findCamera() {
 		return false;
 	}
     
-	if((err = iThingCamInit(camState, AVCaptureDevicePositionBack)))
+	if((err = iThingCamInit(camState, kInitialCamPosition)))
 	{
 		printf("iThingCamera: no camera found\n");
 		return false;

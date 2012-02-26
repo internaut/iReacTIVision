@@ -13,5 +13,6 @@
 #define kScreenH 768
 
 #define kUsePortrait 0
+#define kInitialCamPosition AVCaptureDevicePositionFront
 
 #endif
