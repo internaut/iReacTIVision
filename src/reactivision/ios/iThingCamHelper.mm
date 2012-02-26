@@ -39,9 +39,9 @@ OSErr iThingCamInit(iThingCamState *pState, AVCaptureDevicePosition devicePos) {
     iThingCamChangeDevice(pState, devicePos);
     
     // Create the video preview layer
-    pState->videoLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:pState->session];
-    [pState->videoLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
-    [pState->videoLayer setOrientation:AVCaptureVideoOrientationPortrait];
+//    pState->videoLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:pState->session];
+//    [pState->videoLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
+//    [pState->videoLayer setOrientation:AVCaptureVideoOrientationPortrait];
     
 //    // Setup layer size to fullscreen and add it to our context
 //    [pState->videoLayer setFrame:[self bounds]];
@@ -146,7 +146,7 @@ OSErr iThingCamStopGrabbing(iThingCamState *pState) {
 
 void iThingCamDelete(iThingCamState *pState) {
     [pState->session release];
-    [pState->videoLayer release];
+//    [pState->videoLayer release];
     [pState->grabber release];
     [(NSObject *)pState->sampleBufferDelegate release];
     

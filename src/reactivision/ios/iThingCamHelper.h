@@ -24,7 +24,7 @@ struct iThingCamState {
 
     AVCaptureSession *session;  // current capturing session
     
-    AVCaptureVideoPreviewLayer *videoLayer;    // video preview layer
+//    AVCaptureVideoPreviewLayer *videoLayer;    // video preview layer
     
     AVCaptureVideoDataOutput *grabber; // image grabber
     NSTimeInterval lastCapture;

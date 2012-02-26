@@ -39,6 +39,8 @@ enum {
 
 -(void)switchCamsAction:(id)sender;
 
+-(void)switchDispModeAction:(id)sender;
+
 @end
 
 @implementation ControlsView
@@ -114,6 +116,14 @@ enum {
     camController->switchToCameraDevice(newPos);
 }
 
+-(void)switchDispModeAction:(id)sender {
+    MessageListener::DisplayMode curDispMode = videoEngine->getDisplayMode();
+    
+    if (curDispMode == MessageListener::NO_DISPLAY) videoEngine->setDisplayMode(MessageListener::SOURCE_DISPLAY);
+    else if (curDispMode == MessageListener::SOURCE_DISPLAY) videoEngine->setDisplayMode(MessageListener::DEST_DISPLAY);
+    else videoEngine->setDisplayMode(MessageListener::NO_DISPLAY);
+}
+
 #pragma mark other private methods
 
 -(void)simulateKeyboardHit:(SDL_Keycode)keycode {
@@ -145,9 +155,12 @@ enum {
     [self setExclusiveTouch:NO];
     [self addSubview:calibView];
     
-    // calibrate button
+    // switch cams button
     [self createButton:@"switch cameras" frame:CGRectMake(110, 10, 150, 30) action:@selector(switchCamsAction:) parent:self];
     
+    // switch display mode button
+    [self createButton:@"switch display mode" frame:CGRectMake(270, 10, 200, 30) action:@selector(switchDispModeAction:) parent:self];
+        
     // update the view
     [self updateView];
 }
