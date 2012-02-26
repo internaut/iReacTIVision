@@ -17,7 +17,7 @@ iThingCamState *iThingCamNew() {
     return pState;
 }
 
-OSErr iThingCamInit(iThingCamState *pState) {
+OSErr iThingCamInit(iThingCamState *pState, AVCaptureDevicePosition devicePos) {
     OSErr err = 0;
 
 	// zero initialize the structure
@@ -32,31 +32,11 @@ OSErr iThingCamInit(iThingCamState *pState) {
     
     [pState->session setSessionPreset:AVCaptureSessionPresetHigh];
     
-    // Find the back facing camera
-    NSArray* videoDevices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
-    AVCaptureDevice* camera = nil;
+    // Find the camera and set it as input
+    pState->camPositionUnknown = 1;
+    pState->captureInput = NULL;
     
-    for (AVCaptureDevice* device in videoDevices) {
-        if (device.position == AVCaptureDevicePositionBack) {
-            camera = device;
-            break;
-        }
-    }
-    
-    if (camera == nil) return 2;
-    
-    // If we setup the session, we also are responsible to setup the
-    // video device (default camera device) for image capture
-    NSError* error = nil;  
-    [camera lockForConfiguration:&error];
-    [camera setWhiteBalanceMode:AVCaptureWhiteBalanceModeContinuousAutoWhiteBalance];
-    [camera unlockForConfiguration];
-
-    // Create a AVCaptureInput with the camera device
-    AVCaptureInput* cameraInput = [[AVCaptureDeviceInput alloc] initWithDevice:camera error:&error];  
-    
-    [pState->session addInput:cameraInput];
-    [cameraInput release];
+    iThingCamChangeDevice(pState, devicePos);
     
     // Create the video preview layer
     pState->videoLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:pState->session];
@@ -91,6 +71,57 @@ OSErr iThingCamInit(iThingCamState *pState) {
     [pState->session addOutput:pState->grabber];
     
     return err;
+}
+
+OSErr iThingCamChangeDevice(iThingCamState *pState, AVCaptureDevicePosition devicePos) {
+    if (pState->camPositionUnknown != 1 && pState->camPosition == devicePos) return 0; // no change
+    
+    // pause the av session
+    bool wasRunning = iThingCamIsGrabbing(pState);
+    iThingCamStopGrabbing(pState);
+    
+    // get the right camera
+    NSArray *videoDevices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
+    AVCaptureDevice *camera = nil;
+    
+    for (AVCaptureDevice* device in videoDevices) {
+        if (device.position == devicePos) {
+            camera = device;
+            break;
+        }
+    }
+    
+    if (camera == nil) return 2;    // could not find a cam with that position!
+    
+    // set the new state
+    pState->camPosition = devicePos;
+    
+    // If we setup the session, we also are responsible to setup the
+    // video device (default camera device) for image capture
+    NSError* error = nil;  
+    [camera lockForConfiguration:&error];
+    [camera setWhiteBalanceMode:AVCaptureWhiteBalanceModeContinuousAutoWhiteBalance];
+    [camera unlockForConfiguration];
+
+    // Remove previous AVCaptureInput if neccessary
+    if (pState->captureInput) {
+        [pState->session removeInput:pState->captureInput];
+        [pState->captureInput release];
+    }
+
+    // Create a new AVCaptureInput with the camera device
+    pState->captureInput = [[AVCaptureDeviceInput alloc] initWithDevice:camera error:&error];  
+
+    // add it to the session
+    [pState->session addInput:pState->captureInput];
+    
+    // set new status
+    pState->camPositionUnknown = 0;
+    
+    // start the session again
+    if (wasRunning) iThingCamStartGrabbing(pState);
+    
+    return 0;
 }
 
 bool iThingCamIsGrabbing(iThingCamState *pState) {
@@ -223,15 +254,13 @@ void iThingCamGetFrame(iThingCamState *pState, unsigned char **buf) {
     CGColorSpaceRef grayColorSpace = CGColorSpaceCreateDeviceGray();
     CGContextRef grayContext = CGBitmapContextCreate(camState->buffer, camState->pixelsWidth, camState->pixelsHeight, 8, camState->pixelsWidth, grayColorSpace, kCGImageAlphaNone);
     
-    // and turn around
-    // We will also have to flip the x axis
-    CGPoint ctr = CGPointMake(camState->pixelsHeight / 2.0f, camState->pixelsWidth / 2.0f);
-//    CGContextTranslateCTM(grayContext, ctr.x, ctr.y);
-//    CGContextScaleCTM(grayContext, -1.0f, 1.0f);
-    
-    // Rotate to the desired orientation
-//    CGContextTranslateCTM(grayContext, -ctr.x, ctr.y);
-//    CGContextRotateCTM (grayContext, -M_PI/ 2.0f);
+    // We will also have to flip the y axis if we have the front cam!
+    if (camState->camPosition == AVCaptureDevicePositionFront) {
+        CGPoint ctr = CGPointMake(camState->pixelsWidth / 2.0f, camState->pixelsHeight / 2.0f);
+        CGContextTranslateCTM(grayContext, ctr.x, ctr.y);
+        CGContextScaleCTM(grayContext, 1.0f, -1.0f);
+        CGContextTranslateCTM(grayContext, -ctr.x, -ctr.y);
+    }
     
     // Draw the image in the context
     CGContextDrawImage(grayContext, CGRectMake(0, 0, camState->pixelsWidth, camState->pixelsHeight), rgbImage);

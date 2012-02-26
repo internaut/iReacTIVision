@@ -19,6 +19,8 @@
 #ifndef ITHINGCAMERA_H
 #define ITHINGCAMERA_H
 
+#import <AVFoundation/AVFoundation.h>
+
 #include "../common/cameraEngine.h"
 #include "iThingCamHelper.h"
 
@@ -51,15 +53,11 @@ public:
 	void showSettingsDialog();
 	void drawGUI(SDL_Surface *display) {};
 	
+    void switchToCameraDevice(AVCaptureDevicePosition dev);
+    AVCaptureDevicePosition getCameraDevice();
+    
 private:
     iThingCamState *camState;
-    
-//	ImageDescriptionHandle vdImageDesc;
-//	CGrafPtr	dstPort;
-//	Rect		dstPortBounds;
-//	Rect		dstDisplayBounds;
-//	void*		pDstData;
-//	long		dstDataSize;
 };
 
 #endif

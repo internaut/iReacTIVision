@@ -386,6 +386,7 @@ int main(int argc, char *argv[]) {
     UIViewController *uiRootViewCtrl = uiWin.rootViewController;
     UIView *uiRootView = uiRootViewCtrl.view;
     [uiRootView addSubview:controlsView];
+    [controlsView setVideoEngine:engine];
     
     TUIFrontendCore *frontendCore = [TUIFrontendCore shared];
     [frontendCore start];

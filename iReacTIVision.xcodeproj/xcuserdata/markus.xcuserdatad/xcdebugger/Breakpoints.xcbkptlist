@@ -113,5 +113,19 @@
          landmarkName = "TUIOMsgListener::ProcessMessage(const osc::ReceivedMessage &amp;m, const IpEndpointName &amp;remoteEndpoint)"
          landmarkType = "5">
       </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "src/reactivision/ios/iThingCamera.cpp"
+         timestampString = "351974400.147636"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "104"
+         endingLineNumber = "104"
+         landmarkName = "iThingCamera::startCamera()"
+         landmarkType = "5">
+      </FileBreakpoint>
    </FileBreakpoints>
 </Bucket>

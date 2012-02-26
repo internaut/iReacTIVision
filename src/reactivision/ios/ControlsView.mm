@@ -8,6 +8,8 @@
 
 #import "ControlsView.h"
 
+#include "iThingCamera.h"
+
 #include <SDL.h>
 
 static const CGRect kControlsViewMiniFrame = CGRectMake(0, 0, 1024, 50);
@@ -20,8 +22,11 @@ enum {
 @interface ControlsView()
 
 -(void)createSubviews;
+
 -(void)updateView;
+
 -(void)simulateKeyboardHit:(SDL_Keycode)keycode;
+
 -(UIButton *)createButton:(NSString *)title frame:(CGRect)frame action:(SEL)action parent:(UIView *)parent;
 -(UIButton *)createButton:(NSString *)title frame:(CGRect)frame action:(SEL)action parent:(UIView *)parent tag:(NSInteger)tag type:(UIButtonType)type;
 
@@ -31,6 +36,8 @@ enum {
 -(void)calibRevertAction:(id)sender;
 
 -(void)calibMoveAction:(id)sender;
+
+-(void)switchCamsAction:(id)sender;
 
 @end
 
@@ -100,6 +107,13 @@ enum {
     if (key != 0) [self simulateKeyboardHit:key];        
 }
 
+-(void)switchCamsAction:(id)sender {
+    iThingCamera *camController = (iThingCamera *)videoEngine->camera_;
+    AVCaptureDevicePosition curPos = camController->getCameraDevice();
+    AVCaptureDevicePosition newPos = (curPos == AVCaptureDevicePositionBack) ? AVCaptureDevicePositionFront : AVCaptureDevicePositionBack;
+    camController->switchToCameraDevice(newPos);
+}
+
 #pragma mark other private methods
 
 -(void)simulateKeyboardHit:(SDL_Keycode)keycode {
@@ -131,6 +145,10 @@ enum {
     [self setExclusiveTouch:NO];
     [self addSubview:calibView];
     
+    // calibrate button
+    [self createButton:@"switch cameras" frame:CGRectMake(110, 10, 150, 30) action:@selector(switchCamsAction:) parent:self];
+    
+    // update the view
     [self updateView];
 }
 

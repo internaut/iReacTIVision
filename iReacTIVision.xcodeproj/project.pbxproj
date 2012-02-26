@@ -468,8 +468,8 @@
 		2870D9D31465AF8700CF8299 /* ios */ = {
 			isa = PBXGroup;
 			children = (
-				2870D9D41465AF8700CF8299 /* iThingCamera.cpp */,
 				2870D9D51465AF8700CF8299 /* iThingCamera.h */,
+				2870D9D41465AF8700CF8299 /* iThingCamera.cpp */,
 				2870D9D61465AF8700CF8299 /* iThingCamHelper.h */,
 				2870D9D71465AF8700CF8299 /* iThingCamHelper.mm */,
 				2870D9D81465AF8700CF8299 /* Tools.h */,

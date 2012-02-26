@@ -46,22 +46,27 @@ iThingCamera::~iThingCamera()
 	if (buffer!=NULL) delete []buffer;
 }
 
+void iThingCamera::switchToCameraDevice(AVCaptureDevicePosition dev) {
+    iThingCamChangeDevice(camState, dev);
+}
+
+AVCaptureDevicePosition iThingCamera::getCameraDevice() {
+    return camState->camPosition;
+}
+
 bool iThingCamera::findCamera() {
 
 	OSErr err;
 	
 	if(!(camState = iThingCamNew()))
 	{
-		//printf("vdgNew: failed to allocate\n");
+		printf("iThingCamera: failed to allocate\n");
 		return false;
 	}
     
-    camState->camPosition = AVCaptureDevicePositionBack;
-	
-	if(err = iThingCamInit(camState))
+	if((err = iThingCamInit(camState, AVCaptureDevicePositionBack)))
 	{
-		//printf("vdgInit err=%d\n", err);
-		printf("no camera found\n");
+		printf("iThingCamera: no camera found\n");
 		return false;
 	}
 
@@ -74,162 +79,29 @@ bool iThingCamera::initCamera() {
 	if (cameraID < 0) return false;
 	readSettings();
 
-	OSErr err;
+//	OSErr err;
     
     // hardcoded until now...
     // this is for the back cam. front has 640x480
     this->width = kScreenW;
     this->height = kScreenH;
-    
-	
-//	if (config.device!=SETTING_AUTO) {
-//		if(err = vdgRequestSettingsNoGUI(pVdg))
-//		{
-//			printf("camera setup cancelled\n");
-//				//printf("vdgRequestSettings err=%d\n", err);
-//			return false;
-//		}
-//	} else {
-//		if(err = vdgRequestSettings(pVdg))
-//		{
-//			printf("camera setup cancelled\n");
-//			//printf("vdgRequestSettings err=%d\n", err);
-//			return false;
-//		}		
-//	}
-//
-//    long nameLength = 256;
-//	if (err = vdgGetDeviceNameAndFlags(pVdg, cameraName, &nameLength, NULL))
-//	{
-//		sprintf(cameraName,"unknown camera");
-//	}
-//
-//	long milliSecPerFrame;
-//	Fixed framerate;
-//	long bytesPerSecond;
-//	if (err = vdgGetDataRate(pVdg, &milliSecPerFrame, &framerate, &bytesPerSecond))
-//	{
-//		fps = 30;
-//	} else fps = (int)(framerate/65536);
 
     fps = camState->captureRate;
 
-	//fps = vdgGetFrameRate(pVdg);	
-	//printf("%d\n",fps);
-
-//	if(err = vdgPreflightGrabbing(pVdg))
-//	{
-//		//printf("vdgPreflightGrabbing err=%d\n", err);
-//		return false;
-//	}
-	
-//	vdImageDesc = (ImageDescriptionHandle)NewHandle(0);
-//	if (err = vdgGetImageDescription( pVdg, 
-//									  vdImageDesc))
-//	{
-//		//printf("vdgGetImageDescription err=%d\n", err);
-//		return false;
-//	}
-//
-//	int max_width = (*vdImageDesc)->width;
-//	int max_height = (*vdImageDesc)->height;
-//	
-//	if ((config.width>0) && (config.height>0)) {
-//		dstPortBounds.left = config.xoff;
-//		dstPortBounds.right = config.xoff+config.width;
-//		dstPortBounds.top = config.yoff;
-//		dstPortBounds.bottom = config.yoff+config.height;
-//		
-//		if (dstPortBounds.left<0) dstPortBounds.left = 0;
-//		if (dstPortBounds.right>max_width) dstPortBounds.right = max_width;
-//		if (dstPortBounds.top<0) dstPortBounds.top = 0;
-//		if (dstPortBounds.bottom>max_height) dstPortBounds.bottom = max_height;
-//	} else {
-//		dstPortBounds.left = 0;
-//		dstPortBounds.right = max_width;
-//		dstPortBounds.top = 0;
-//		dstPortBounds.bottom = max_height;
-//	}
-//	
-//	if (err = createOffscreenGWorld(	&dstPort,
-//		//kYUV420CodecType,
-//		//kComponentVideoSigned,
-//		//kComponentVideoCodecType,
-//		k422YpCbCr8CodecType,
-//		&dstPortBounds))
-//	{
-//		printf("createOffscreenGWorld err=%d\n", err);
-//		return false;	
-//	}
-//	
-//	// Get buffer from GWorld
-//	pDstData = GetPixBaseAddr(GetGWorldPixMap(dstPort));
-//	dstDataSize = GetPixRowBytes(GetGWorldPixMap(dstPort)) * (dstPortBounds.bottom - dstPortBounds.top); 
-//	dstDisplayBounds = dstPortBounds;
-//
-//	
-//	// Set the decompression destination to the offscreen GWorld
-//	if (err = vdgSetDestination(	pVdg, dstPort ))
-//	{
-//		//printf("vdgSetDestination err=%d\n", err);
-//		return false;
-//	}
-//
-//	this->width =dstPortBounds.right - dstPortBounds.left;
-//	this->height = dstPortBounds.bottom - dstPortBounds.top;
-//	
-//	buffer = new unsigned char[this->width*this->height*bytes];
 	return true;
 }
 
 unsigned char* iThingCamera::getFrame()
-{
-//	OSErr   err;
-//	int		isUpdated = 0;
-
-//	if (!iThingCamIsGrabbing(camState)) return NULL;
-    
+{    
     iThingCamGetFrame(camState, &buffer);
     
-    return buffer;
-		 
-//	if (err = vdgIdle( pVdg, &isUpdated))
-//	{
-//		//printf("could not grab frame\n");
-//		return NULL;
-//	}
-//
-//	if (isUpdated)
-//	{
-//		unsigned char *src = (unsigned char*)pDstData;
-//		unsigned char *dest = buffer;
-//
-//		switch (colour) {
-//			case true: {
-//				uyvy2rgb(width,height,src,dest);
-//				break;
-//			}
-//			case false: {
-//				uyvy2gray(width,height,src,dest);
-//				break;
-//			}
-//		}
-//		lost_frames=0;
-//		timeout = 1000;
-//		return buffer;
-//	} else {
-//		usleep(1000);
-//		lost_frames++;
-//		if (lost_frames>timeout) running=false; // give up after 5 (at init) or 2 (at runtime) seconds
-//		return NULL;
-//	}
-	
+    return buffer;	
 }
 
 bool iThingCamera::startCamera()
 {
 	OSErr err;
-	if (err = iThingCamStartGrabbing(camState))
+	if ((err = iThingCamStartGrabbing(camState)))
 	{
 		printf("could not start camera\n");
 		return false;
@@ -244,7 +116,7 @@ bool iThingCamera::stopCamera()
 	running=false;
 
 	OSErr err;
-	if (err = iThingCamStopGrabbing(camState))
+	if ((err = iThingCamStopGrabbing(camState)))
 	{
 		printf("errors while stopping camera\n");
 		return false;
@@ -272,9 +144,6 @@ bool iThingCamera::closeCamera() {
 }
 
 void iThingCamera::showSettingsDialog() {
-//	vdgStopGrabbing(pVdg);
-//	vdgShowSettings(pVdg);	
-//	vdgPreflightGrabbing(pVdg);
-//	vdgStartGrabbing(pVdg);
+    // not implemented
 }
 

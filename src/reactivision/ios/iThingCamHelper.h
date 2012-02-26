@@ -17,7 +17,10 @@
 //typedef struct tagiThingCamState iThingCamState;
 
 struct iThingCamState {
+    int camPositionUnknown; // is "1" if not yet initialized
     AVCaptureDevicePosition camPosition;    // front or back for iPad2
+    
+    AVCaptureInput *captureInput;   // current video input device
 
     AVCaptureSession *session;  // current capturing session
     
@@ -39,11 +42,13 @@ struct iThingCamState {
 
 iThingCamState *iThingCamNew();
 
-OSErr iThingCamInit(iThingCamState *pState);
+OSErr iThingCamInit(iThingCamState *pState, AVCaptureDevicePosition devicePos);
 
 //OSErr iThingCamGetImageDescription(iThingCamState *pState, ImageDescriptionHandle vdImageDesc);
 
 bool iThingCamIsGrabbing(iThingCamState *pState);
+
+OSErr iThingCamChangeDevice(iThingCamState *pState, AVCaptureDevicePosition devicePos);
 
 OSErr iThingCamStartGrabbing(iThingCamState *pState);
 
