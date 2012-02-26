@@ -8,6 +8,8 @@
 
 #import "KashrutGame.h"
 
+#import "SoundUtil.h"
+
 @interface KashrutGame()
 
 #ifdef DEBUG
@@ -43,6 +45,12 @@
         [self setFoodArea:CGRectMake(0.0f, 0.0f, 0.5f, 1.0f) forType:kKashrutGameFoodTypeNeutral];
         [self setFoodArea:CGRectMake(0.5f, 0.0f, 0.5f, 1.0f) forType:kKashrutGameFoodTypeUnkosher];
         
+        // load sounds
+        // success sound by "grunz" from http://www.freesound.org/people/grunz/sounds/109662/
+        SoundUtil *sound = [SoundUtil shared];
+        successSnd = [sound loadSound:@"success.wav"];
+        failureSnd = [sound loadSound:@"failure.wav"];
+        
         NSLog(@"KashrutGame: Initialized");
     }
     
@@ -50,6 +58,9 @@
 }
 
 -(void)dealloc {
+    [core.sound unloadSound:successSnd];
+    [core.sound unloadSound:failureSnd];
+    
     [foodObjectTypes release];
     [foodAreas release];
     [foodObjects release];
@@ -145,8 +156,12 @@
 -(void)food:(KashrutFoodObject *)food movedFromAreaType:(KashrutGameFoodType)oldType toAreaType:(KashrutGameFoodType)newType {
     if (newType != food.foodType) {
         NSLog(@"KashrutGame: Wrong placed food with class id %d", food.classId);
+        
+        [core.sound playSound:failureSnd];
     } else {
         NSLog(@"KashrutGame: Correctly placed food with class id %d", food.classId);    
+        
+        [core.sound playSound:successSnd];
     }
     
     [food setLocationFoodType:newType];

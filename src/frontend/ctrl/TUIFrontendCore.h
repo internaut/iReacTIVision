@@ -10,6 +10,7 @@
 
 #import "Singleton.h"
 #import "TUIObjectObserver.h"
+#import "SoundUtil.h"
 
 #include "TUIOMsgListener.h"
 #include "UdpSocket.h"
@@ -23,6 +24,7 @@
 
 @property (nonatomic,assign) int port;
 @property (atomic,readonly) NSDictionary *tuiObjects;
+@property (nonatomic,readonly) SoundUtil *sound;
 
 -(void)start;
 -(void)stop;

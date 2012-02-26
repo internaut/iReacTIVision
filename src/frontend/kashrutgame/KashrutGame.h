@@ -19,6 +19,9 @@
     NSMutableDictionary *foodAreas;     // dictionary with mapping NSNumber (KashrutGameFoodType) -> NSValue (CGRect area)
     NSDictionary *foodObjectTypes;      // dictionary with mapping NSNumber (TUIObject class id) -> NSNumber (KashrutGameFoodType) 
     NSMutableDictionary *foodObjects;   // dictionary with mapping NSNumber (TUIObject class id) -> KashrutFoodObject
+    
+    SystemSoundID successSnd;
+    SystemSoundID failureSnd;
 }
 
 @property (nonatomic,assign) TUIFrontendCore *core;

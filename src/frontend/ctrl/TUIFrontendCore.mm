@@ -8,7 +8,6 @@
 
 #import "TUIFrontendCore.h"
 
-#import "AudioController.h"
 #import "KashrutGame.h"
 
 // this callback is called from TUIOMsgListener upon TUIO message receive
@@ -30,6 +29,7 @@ void TUIOMsgCallbackFunction(TUIOMsg *msg) {
 
 @synthesize port;
 @synthesize tuiObjects;
+@synthesize sound;
 
 #pragma mark init/dealloc
 
@@ -41,14 +41,11 @@ void TUIOMsgCallbackFunction(TUIOMsg *msg) {
         port = 3333;
         
         // create objects
+        sound = [SoundUtil shared];
         tuiObjects = [[NSMutableDictionary alloc] init];
         tuiObjectObservers = [[NSMutableSet alloc] init];
         
         // set observers
-//        AudioController *audioCtrl = [[[AudioController alloc] init] autorelease];
-//        [audioCtrl setCore:self];
-//        [self addTUIObjectObserver:audioCtrl];
-
         KashrutGame *kashrutGame = [[[KashrutGame alloc] init] autorelease];
         [kashrutGame setCore:self];
         [self addTUIObjectObserver:kashrutGame];
@@ -62,6 +59,9 @@ void TUIOMsgCallbackFunction(TUIOMsg *msg) {
     
     [tuiObjects release];
     [tuiObjectObservers release];
+    
+    // destory other singletons
+    [sound destroy];
 
     [super dealloc];
 }
