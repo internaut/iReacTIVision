@@ -65,8 +65,15 @@ enum {
 
 -(void)dealloc {
     [calibView release];
+    [fpsLabel release];
 
     [super dealloc];
+}
+
+#pragma mark public methods
+
+-(void)updateFpsLabel:(int)fpsValue {
+    [fpsLabel setText:[NSString stringWithFormat:@"%d", fpsValue]];
 }
 
 #pragma mark ui actions
@@ -160,6 +167,18 @@ enum {
     
     // switch display mode button
     [self createButton:@"switch display mode" frame:CGRectMake(270, 10, 200, 30) action:@selector(switchDispModeAction:) parent:self];
+    
+    // fps label
+#ifdef DEBUG
+    const int fpsLabelW = 50;
+    const int fpsLabelH = 30;
+    fpsLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width - fpsLabelW - 10, 10, fpsLabelW, fpsLabelH)];
+    [fpsLabel setTextColor:[UIColor whiteColor]];
+    [fpsLabel setBackgroundColor:[UIColor clearColor]];
+//    [fpsLabel setOpaque:NO];
+    [self updateFpsLabel:0.0f];
+    [self addSubview:fpsLabel];
+#endif
         
     // update the view
     [self updateView];

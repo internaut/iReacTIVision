@@ -9,11 +9,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "src/reactivision/common/PortVideoSDL.cpp"
-         timestampString = "351032227.787933"
+         timestampString = "352761748.909596"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "526"
-         endingLineNumber = "526"
+         startingLineNumber = "534"
+         endingLineNumber = "534"
          landmarkName = "PortVideoSDL::allocateBuffers()"
          landmarkType = "5">
       </FileBreakpoint>
@@ -35,11 +35,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "src/frontend/ctrl/TUIFrontendCore.h"
-         timestampString = "351971171.388455"
+         timestampString = "352756385.542862"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "25"
-         endingLineNumber = "25"
+         startingLineNumber = "33"
+         endingLineNumber = "33"
          landmarkName = "port"
          landmarkType = "19">
       </FileBreakpoint>
@@ -133,11 +133,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "src/reactivision/common/PortVideoSDL.cpp"
-         timestampString = "351981680.973569"
+         timestampString = "352761438.945896"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "117"
-         endingLineNumber = "117"
+         startingLineNumber = "118"
+         endingLineNumber = "118"
          landmarkName = "PortVideoSDL::run()"
          landmarkType = "5">
       </FileBreakpoint>
@@ -147,11 +147,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "src/reactivision/common/PortVideoSDL.cpp"
-         timestampString = "351981754.180346"
+         timestampString = "352761438.945896"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "133"
-         endingLineNumber = "133"
+         startingLineNumber = "134"
+         endingLineNumber = "134"
          landmarkName = "PortVideoSDL::run()"
          landmarkType = "5">
       </FileBreakpoint>
@@ -161,11 +161,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "src/reactivision/common/PortVideoSDL.cpp"
-         timestampString = "351981760.753554"
+         timestampString = "352761438.945896"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "136"
-         endingLineNumber = "136"
+         startingLineNumber = "137"
+         endingLineNumber = "137"
          landmarkName = "PortVideoSDL::run()"
          landmarkType = "5">
       </FileBreakpoint>
@@ -175,11 +175,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "src/reactivision/common/PortVideoSDL.cpp"
-         timestampString = "351981814.308923"
+         timestampString = "352761438.945896"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "217"
-         endingLineNumber = "217"
+         startingLineNumber = "218"
+         endingLineNumber = "218"
          landmarkName = "PortVideoSDL::mainLoop()"
          landmarkType = "5">
       </FileBreakpoint>
@@ -189,12 +189,26 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "src/reactivision/common/PortVideoSDL.cpp"
-         timestampString = "351981852.25311"
+         timestampString = "352761438.945896"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "253"
-         endingLineNumber = "253"
+         startingLineNumber = "254"
+         endingLineNumber = "254"
          landmarkName = "PortVideoSDL::mainLoop()"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "src/reactivision/common/PortVideoSDL.cpp"
+         timestampString = "352761785.273183"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "299"
+         endingLineNumber = "299"
+         landmarkName = "PortVideoSDL::frameStatistics(long cameraTime, long processingTime, long totalTime)"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

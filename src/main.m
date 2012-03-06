@@ -339,7 +339,6 @@ int main(int argc, char *argv[]) {
 	switch (config.display_mode) {
 		case 0: engine->setDisplayMode(engine->NO_DISPLAY); break;
 		case 1: engine->setDisplayMode(engine->SOURCE_DISPLAY); break;
-//		case 2: engine->setDisplayMode(engine->SOURCE_DISPLAY); break;
 		case 2: engine->setDisplayMode(engine->DEST_DISPLAY); break;
 	}
 		
@@ -379,17 +378,11 @@ int main(int argc, char *argv[]) {
 
     engine->init();
 
-#ifdef IOS
-    ControlsView *controlsView = [[[ControlsView alloc] init] autorelease];
-    UIApplication *uiApp = [UIApplication sharedApplication];
-    UIWindow *uiWin = [uiApp.windows objectAtIndex:0];
-    UIViewController *uiRootViewCtrl = uiWin.rootViewController;
-    UIView *uiRootView = uiRootViewCtrl.view;
-    [uiRootView addSubview:controlsView];
-    [controlsView setVideoEngine:engine];
-    
+#ifdef IOS    
     TUIFrontendCore *frontendCore = [TUIFrontendCore shared];
+    [frontendCore setEngine:engine];
     [frontendCore start];
+    engine->setDisplayMode(MessageListener::SOURCE_DISPLAY);
 #endif
 
 	engine->run();

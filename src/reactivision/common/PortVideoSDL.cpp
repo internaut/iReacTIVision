@@ -20,6 +20,7 @@
 
 #ifdef IOS
 #import "Tools.h"
+#import "TUIFrontendCore.h"
 #endif
 
 // the thread function which contantly retrieves the latest frame
@@ -308,6 +309,13 @@ void PortVideoSDL::frameStatistics(long cameraTime, long processingTime, long to
 		current_fps = (int)floor( (frames_ / diffTime) + 0.5f );
 		char caption[24] = "";
 		sprintf(caption,"%s - %d FPS",app_name_.c_str(),current_fps);
+        
+#ifdef IOS
+#ifdef DEBUG
+        [[[TUIFrontendCore shared] controlsView] updateFpsLabel:current_fps];
+#endif
+#endif
+        
 		if (!calibrate_) SDL_WM_SetCaption(caption, NULL );
 		/*std::cout 	<< floor((cameraTime_/frames_)/1000.0f) << " " 
 				<< floor((processingTime_/frames_)/1000.0f) << " " 

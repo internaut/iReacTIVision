@@ -28,8 +28,10 @@ void TUIOMsgCallbackFunction(TUIOMsg *msg) {
 @implementation TUIFrontendCore
 
 @synthesize port;
+@synthesize engine;
 @synthesize tuiObjects;
 @synthesize sound;
+@synthesize controlsView;
 
 #pragma mark init/dealloc
 
@@ -44,6 +46,18 @@ void TUIOMsgCallbackFunction(TUIOMsg *msg) {
         sound = [SoundUtil shared];
         tuiObjects = [[NSMutableDictionary alloc] init];
         tuiObjectObservers = [[NSMutableSet alloc] init];
+        
+        // create controls view overlay
+        controlsView = [[ControlsView alloc] init];
+        
+        // get the application root view controller and root view
+        UIApplication *uiApp = [UIApplication sharedApplication];
+        UIWindow *uiWin = [uiApp.windows objectAtIndex:0];
+        rootViewCtrl = uiWin.rootViewController;
+        rootView = rootViewCtrl.view;
+        
+        // add the controls view overlay
+        [rootView addSubview:controlsView];
         
         // set observers
         KashrutGame *kashrutGame = [[[KashrutGame alloc] init] autorelease];
@@ -60,6 +74,8 @@ void TUIOMsgCallbackFunction(TUIOMsg *msg) {
     [tuiObjects release];
     [tuiObjectObservers release];
     
+    [controlsView release];
+    
     // destory other singletons
     [sound destroy];
 
@@ -67,6 +83,11 @@ void TUIOMsgCallbackFunction(TUIOMsg *msg) {
 }
 
 #pragma mark public methods
+
+-(void)setEngine:(PortVideoSDL *)e {
+    engine = e;
+    [controlsView setVideoEngine:engine];
+}
 
 -(void)start {
     // create message listener

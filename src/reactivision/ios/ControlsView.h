@@ -18,8 +18,11 @@ typedef enum {
 @interface ControlsView : UIView {
     ctrlViewMode viewMode;
     UIView *calibView;
+    UILabel *fpsLabel;
 }
 
 @property (nonatomic,assign) PortVideoSDL *videoEngine;
+
+-(void)updateFpsLabel:(int)fpsValue;
 
 @end
