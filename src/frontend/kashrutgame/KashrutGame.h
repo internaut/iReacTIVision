@@ -20,7 +20,7 @@
 @interface KashrutGame : NSObject<TUIObjectObserver> {
     NSMutableDictionary *foodAreas;     // dictionary with mapping NSNumber (KashrutGameFoodType) -> NSValue (CGRect area)
     NSDictionary *foodObjectTypes;      // dictionary with mapping NSNumber (TUIObject class id) -> NSNumber (KashrutGameFoodType) 
-    NSMutableDictionary *foodObjects;   // dictionary with mapping NSNumber (TUIObject class id) -> KashrutFoodObject
+    NSMutableDictionary *foodObjects;   // dictionary with mapping NSNumber (TUIObject sess id) -> KashrutFoodObject
     
     SystemSoundID successSnd;
     SystemSoundID failureSnd;

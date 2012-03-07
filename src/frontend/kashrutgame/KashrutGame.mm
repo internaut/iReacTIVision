@@ -155,23 +155,24 @@ static NSArray * const kFoodAreaColors = [NSArray arrayWithObjects:
           rotationAccel:(float)rotAccel
         justInitialized:(BOOL)justInitialized {
     NSLog(@"KashrutGame: Updating object#%d (class id %d)", obj.sessId, obj.classId);
-#ifdef DEBUG
-    [self dbgListObjects];
-#endif
+//#ifdef DEBUG
+//    [self dbgListObjects];
+//#endif
     
     NSNumber *classId = [NSNumber numberWithInt:obj.classId];
+    NSNumber *sessId = [NSNumber numberWithInt:obj.sessId];
     KashrutFoodObject *foodObj = nil;
     
     if (justInitialized) {  // TUIO object has just got intialized -> create a food object
         NSNumber *foodTypeNumber = [foodObjectTypes objectForKey:classId];
         if (foodTypeNumber) {
             foodObj = [KashrutFoodObject foodObjectWithTUIObject:obj withType:(KashrutGameFoodType)[foodTypeNumber intValue]];
-            [foodObjects setObject:foodObj forKey:[NSNumber numberWithInt:foodObj.classId]];
+            [foodObjects setObject:foodObj forKey:[NSNumber numberWithInt:foodObj.sessId]];
         } else {
             NSLog(@"KashrutGame: Could not identify food type for class id %d", obj.classId);
         }
     } else {    // we have an already known object
-        foodObj = [foodObjects objectForKey:classId];
+        foodObj = [foodObjects objectForKey:sessId];
         [foodObj updateWithTUIObject:obj];
         
         if (!foodObj) {
@@ -191,7 +192,7 @@ static NSArray * const kFoodAreaColors = [NSArray arrayWithObjects:
 //    [self dbgListObjects];
 //#endif
 
-    [foodObjects removeObjectForKey:[NSNumber numberWithInt:obj.classId]];
+    [foodObjects removeObjectForKey:[NSNumber numberWithInt:obj.sessId]];
 }
 
 #pragma mark private methods
@@ -212,6 +213,8 @@ static NSArray * const kFoodAreaColors = [NSArray arrayWithObjects:
         }
     }
     
+    NSLog(@"Checked food#%d with class id %d: %d -> %d", food.sessId, food.classId, food.locationFoodType, foundLocationType);
+    
     // if the food location type has changed, give feedback to the user!
     if (food.locationFoodType != foundLocationType) {
         [self food:food movedFromAreaType:food.locationFoodType toAreaType:foundLocationType];
@@ -220,11 +223,11 @@ static NSArray * const kFoodAreaColors = [NSArray arrayWithObjects:
 
 -(void)food:(KashrutFoodObject *)food movedFromAreaType:(KashrutGameFoodType)oldType toAreaType:(KashrutGameFoodType)newType {
     if (newType != food.foodType) {
-        NSLog(@"KashrutGame: Wrong placed food with class id %d", food.classId);
+        NSLog(@"KashrutGame: Wrong placed food#%d with class id %d", food.sessId, food.classId);
         
         [core.sound playSound:failureSnd];
     } else {
-        NSLog(@"KashrutGame: Correctly placed food with class id %d", food.classId);    
+        NSLog(@"KashrutGame: Correctly placed#%d food with class id %d", food.sessId, food.classId);    
         
         [core.sound playSound:successSnd];
     }

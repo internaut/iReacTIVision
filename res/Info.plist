@@ -24,6 +24,8 @@
 	<string>1.0</string>
 	<key>NSMainNibFile</key>
 	<string></string>
+	<key>UIApplicationExitsOnSuspend</key>
+	<true/>
 	<key>UIFileSharingEnabled</key>
 	<true/>
 	<key>UIInterfaceOrientation</key>
