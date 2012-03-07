@@ -8,7 +8,6 @@
 
 #import "TUIFrontendCore.h"
 
-#import "KashrutGame.h"
 
 // this callback is called from TUIOMsgListener upon TUIO message receive
 void TUIOMsgCallbackFunction(TUIOMsg *msg) {
@@ -32,6 +31,8 @@ void TUIOMsgCallbackFunction(TUIOMsg *msg) {
 @synthesize tuiObjects;
 @synthesize sound;
 @synthesize controlsView;
+@synthesize rootView;
+@synthesize rootViewCtrl;
 
 #pragma mark init/dealloc
 
@@ -49,6 +50,7 @@ void TUIOMsgCallbackFunction(TUIOMsg *msg) {
         
         // create controls view overlay
         controlsView = [[ControlsView alloc] init];
+        [controlsView setCore:self];
         
         // get the application root view controller and root view
         UIApplication *uiApp = [UIApplication sharedApplication];
@@ -60,9 +62,15 @@ void TUIOMsgCallbackFunction(TUIOMsg *msg) {
         [rootView addSubview:controlsView];
         
         // set observers
-        KashrutGame *kashrutGame = [[[KashrutGame alloc] init] autorelease];
-        [kashrutGame setCore:self];
-        [self addTUIObjectObserver:kashrutGame];
+        frontendApp = [[KashrutGame alloc] init];
+        [frontendApp setCore:self];
+        [self addTUIObjectObserver:frontendApp];
+        
+        [frontendApp loadFoodAreas];
+        [frontendApp displayFoodAreaOverlay];
+        
+        // add a subview
+        [rootView insertSubview:frontendApp.foodAreaOverlay belowSubview:controlsView];
     }
 
     return self;
@@ -70,6 +78,8 @@ void TUIOMsgCallbackFunction(TUIOMsg *msg) {
 
 -(void)dealloc {
     [self stop];
+    
+    [frontendApp release];
     
     [tuiObjects release];
     [tuiObjectObservers release];
@@ -117,6 +127,10 @@ void TUIOMsgCallbackFunction(TUIOMsg *msg) {
     }
     
     [tuiObjects removeAllObjects];
+}
+
+-(void)toggleFrontendDisplay {
+    [frontendApp toggleDisplay];
 }
 
 -(void)receivedTUIOMsg:(TUIOMsg *)msg {    

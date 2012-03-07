@@ -8,12 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+#import "TUIFrontendCore.h"
+
 #include "PortVideoSDL.h"
 
 typedef enum {
     kCtrlViewModeDefault = 0,
     kCtrlViewModeCalib
 } ctrlViewMode;
+
+@class TUIFrontendCore;
 
 @interface ControlsView : UIView {
     ctrlViewMode viewMode;
@@ -22,6 +26,7 @@ typedef enum {
 }
 
 @property (nonatomic,assign) PortVideoSDL *videoEngine;
+@property (nonatomic,assign) TUIFrontendCore *core;
 
 -(void)updateFpsLabel:(int)fpsValue;
 

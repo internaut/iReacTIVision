@@ -12,10 +12,14 @@
 #import "TUIObjectObserver.h"
 #import "SoundUtil.h"
 #import "ControlsView.h"
+#import "KashrutGame.h"
 
 #include "TUIOMsgListener.h"
 #include "UdpSocket.h"
 #include "PortVideoSDL.h"
+
+@class ControlsView;
+@class KashrutGame;
 
 @interface TUIFrontendCore : NSObject<Singleton> {
     ControlsView *controlsView;
@@ -26,8 +30,7 @@
     NSMutableDictionary *tuiObjects;    // dictionary with mapping: NSNumber sessId -> TUIObject
     NSMutableSet *tuiObjectObservers;   // set with id<TUIObjectObserver> objects
     
-    UIViewController *rootViewCtrl;
-    UIView *rootView;
+    KashrutGame *frontendApp;
 }
 
 @property (nonatomic,assign) int port;
@@ -35,6 +38,8 @@
 @property (atomic,readonly) NSDictionary *tuiObjects;
 @property (nonatomic,readonly) SoundUtil *sound;
 @property (nonatomic,readonly) ControlsView *controlsView;
+@property (nonatomic,readonly) UIViewController *rootViewCtrl;
+@property (nonatomic,readonly) UIView *rootView;
 
 -(void)start;
 -(void)stop;
@@ -43,5 +48,7 @@
 -(void)removeTUIObjectObserver:(id<TUIObjectObserver>)observer;
 
 -(void)receivedTUIOMsg:(TUIOMsg *)msg;
+
+-(void)toggleFrontendDisplay;
 
 @end

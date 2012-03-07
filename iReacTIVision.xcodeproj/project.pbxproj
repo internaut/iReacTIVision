@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		28400B3D14F6733F0028C19C /* TUIOMsgListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 28400B3C14F6733F0028C19C /* TUIOMsgListener.cpp */; };
 		28400B4014F675910028C19C /* TUIFrontendCore.mm in Sources */ = {isa = PBXBuildFile; fileRef = 28400B3F14F675910028C19C /* TUIFrontendCore.mm */; };
-		2842E30814EC1104005E5D01 /* ControlsView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2842E30714EC1104005E5D01 /* ControlsView.mm */; };
 		28476D5E14F92BD6002DCFB0 /* KashrutGame.mm in Sources */ = {isa = PBXBuildFile; fileRef = 28476D5D14F92BD6002DCFB0 /* KashrutGame.mm */; };
 		28476D6114F92CC6002DCFB0 /* KashrutFoodObject.mm in Sources */ = {isa = PBXBuildFile; fileRef = 28476D6014F92CC6002DCFB0 /* KashrutFoodObject.mm */; };
 		285664A514FA9C0500A79B18 /* SoundUtil.mm in Sources */ = {isa = PBXBuildFile; fileRef = 285664A414FA9C0500A79B18 /* SoundUtil.mm */; };
@@ -89,6 +88,7 @@
 		2870DA9E1465C2A400CF8299 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2870DA9D1465C2A400CF8299 /* CoreMedia.framework */; };
 		2870DAA01465C2AE00CF8299 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2870DA9F1465C2AE00CF8299 /* CoreVideo.framework */; };
 		2870DAA21465C2E800CF8299 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2870DAA11465C2E700CF8299 /* AVFoundation.framework */; };
+		28BF4770150808FE007097CA /* ControlsView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 28BF476F150808FE007097CA /* ControlsView.mm */; };
 		28E804F014F82261001022E8 /* TUIObject.mm in Sources */ = {isa = PBXBuildFile; fileRef = 28E804EF14F82260001022E8 /* TUIObject.mm */; };
 		FD77A0230E26BC0500F39101 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FD77A00B0E26BC0500F39101 /* main.m */; };
 		FDC202E60E107B1200ABAC90 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -109,8 +109,6 @@
 		28400B3E14F675910028C19C /* TUIFrontendCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TUIFrontendCore.h; sourceTree = "<group>"; };
 		28400B3F14F675910028C19C /* TUIFrontendCore.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TUIFrontendCore.mm; sourceTree = "<group>"; };
 		28400B4714F6760B0028C19C /* Singleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Singleton.h; sourceTree = "<group>"; };
-		2842E30614EC1104005E5D01 /* ControlsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlsView.h; sourceTree = "<group>"; };
-		2842E30714EC1104005E5D01 /* ControlsView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ControlsView.mm; sourceTree = "<group>"; };
 		28476D5C14F92BD6002DCFB0 /* KashrutGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KashrutGame.h; sourceTree = "<group>"; };
 		28476D5D14F92BD6002DCFB0 /* KashrutGame.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = KashrutGame.mm; sourceTree = "<group>"; };
 		28476D5F14F92CC6002DCFB0 /* KashrutFoodObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KashrutFoodObject.h; sourceTree = "<group>"; };
@@ -260,6 +258,8 @@
 		2870DA9F1465C2AE00CF8299 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		2870DAA11465C2E700CF8299 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		2870DAB31465D18400CF8299 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
+		28BF476E150808FE007097CA /* ControlsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlsView.h; sourceTree = "<group>"; };
+		28BF476F150808FE007097CA /* ControlsView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ControlsView.mm; sourceTree = "<group>"; };
 		28E804EE14F82260001022E8 /* TUIObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TUIObject.h; sourceTree = "<group>"; };
 		28E804EF14F82260001022E8 /* TUIObject.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TUIObject.mm; sourceTree = "<group>"; };
 		28E804F214F8228C001022E8 /* TUIObjectObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TUIObjectObserver.h; sourceTree = "<group>"; };
@@ -330,6 +330,8 @@
 		28400B3A14F66FEA0028C19C /* gui */ = {
 			isa = PBXGroup;
 			children = (
+				28BF476E150808FE007097CA /* ControlsView.h */,
+				28BF476F150808FE007097CA /* ControlsView.mm */,
 			);
 			path = gui;
 			sourceTree = "<group>";
@@ -474,8 +476,6 @@
 				2870D9D71465AF8700CF8299 /* iThingCamHelper.mm */,
 				2870D9D81465AF8700CF8299 /* Tools.h */,
 				2870D9D91465AF8700CF8299 /* Tools.mm */,
-				2842E30614EC1104005E5D01 /* ControlsView.h */,
-				2842E30714EC1104005E5D01 /* ControlsView.mm */,
 			);
 			path = ios;
 			sourceTree = "<group>";
@@ -810,13 +810,13 @@
 				2870DA931465AF8800CF8299 /* tinyxml.cpp in Sources */,
 				2870DA941465AF8800CF8299 /* tinyxmlerror.cpp in Sources */,
 				2870DA951465AF8800CF8299 /* tinyxmlparser.cpp in Sources */,
-				2842E30814EC1104005E5D01 /* ControlsView.mm in Sources */,
 				28400B3D14F6733F0028C19C /* TUIOMsgListener.cpp in Sources */,
 				28400B4014F675910028C19C /* TUIFrontendCore.mm in Sources */,
 				28E804F014F82261001022E8 /* TUIObject.mm in Sources */,
 				28476D5E14F92BD6002DCFB0 /* KashrutGame.mm in Sources */,
 				28476D6114F92CC6002DCFB0 /* KashrutFoodObject.mm in Sources */,
 				285664A514FA9C0500A79B18 /* SoundUtil.mm in Sources */,
+				28BF4770150808FE007097CA /* ControlsView.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

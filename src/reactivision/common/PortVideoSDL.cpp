@@ -45,7 +45,7 @@ int getFrameFromCamera(void *obj) {
 						engine->framenumber_++;
 						engine->ringBuffer->writeFinished();
 						long driver_time = PortVideoSDL::currentTime() - start_time;
-						std::cout << "camera latency: " << (driver_time/100)/10.0f << "ms" << std::endl;
+//						std::cout << "camera latency: " << (driver_time/100)/10.0f << "ms" << std::endl;
 					}
 					SDL_Delay(1);
 				} else {

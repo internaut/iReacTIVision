@@ -41,11 +41,14 @@ enum {
 
 -(void)switchDispModeAction:(id)sender;
 
+-(void)toggleFrontendDisplayAction:(id)sender;
+
 @end
 
 @implementation ControlsView
 
 @synthesize videoEngine;
+@synthesize core;
 
 #pragma mark init/dealloc
 
@@ -131,6 +134,10 @@ enum {
     else videoEngine->setDisplayMode(MessageListener::NO_DISPLAY);
 }
 
+-(void)toggleFrontendDisplayAction:(id)sender {
+    [core toggleFrontendDisplay];
+}
+
 #pragma mark other private methods
 
 -(void)simulateKeyboardHit:(SDL_Keycode)keycode {
@@ -167,6 +174,9 @@ enum {
     
     // switch display mode button
     [self createButton:@"switch display mode" frame:CGRectMake(270, 10, 200, 30) action:@selector(switchDispModeAction:) parent:self];
+    
+    // toggle frontend display button
+    [self createButton:@"toggle frontend disp" frame:CGRectMake(480, 10, 200, 30) action:@selector(toggleFrontendDisplayAction:) parent:self];
     
     // fps label
 #ifdef DEBUG

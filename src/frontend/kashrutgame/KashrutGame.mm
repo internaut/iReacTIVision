@@ -10,6 +10,13 @@
 
 #import "SoundUtil.h"
 
+static NSArray * const kFoodAreaColors = [NSArray arrayWithObjects:
+    [UIColor blueColor],
+    [UIColor orangeColor],
+    [UIColor greenColor],
+    [UIColor redColor],
+    nil];
+
 @interface KashrutGame()
 
 #ifdef DEBUG
@@ -25,6 +32,7 @@
 @implementation KashrutGame
 
 @synthesize core;
+@synthesize foodAreaOverlay;
 
 #pragma mark init/dealloc
 
@@ -32,18 +40,21 @@
     self = [super init];
     
     if (self) {
+        // create objects
         foodAreas = [[NSMutableDictionary alloc] init];
         foodObjects = [[NSMutableDictionary alloc] init];
         
+        // create area overlay
+        foodAreaOverlay = [[UIView alloc] init];
+        [foodAreaOverlay setHidden:YES];
+        
         // hard coded for now... todo: get from PLIST
         foodObjectTypes = [[NSDictionary alloc] initWithObjectsAndKeys:
-            [NSNumber numberWithInt:kKashrutGameFoodTypeNeutral], [NSNumber numberWithInt:24],
-            [NSNumber numberWithInt:kKashrutGameFoodTypeUnkosher], [NSNumber numberWithInt:25],
+            [NSNumber numberWithInt:kKashrutGameFoodTypeNeutral],   [NSNumber numberWithInt:24],
+            [NSNumber numberWithInt:kKashrutGameFoodTypeDairy],     [NSNumber numberWithInt:25],
+            [NSNumber numberWithInt:kKashrutGameFoodTypeMeat],      [NSNumber numberWithInt:26],
+            [NSNumber numberWithInt:kKashrutGameFoodTypeUnkosher],  [NSNumber numberWithInt:27],
             nil];
-            
-        // hard coded for now... todo: get from PLIST
-        [self setFoodArea:CGRectMake(0.0f, 0.0f, 0.5f, 1.0f) forType:kKashrutGameFoodTypeNeutral];
-        [self setFoodArea:CGRectMake(0.5f, 0.0f, 0.5f, 1.0f) forType:kKashrutGameFoodTypeUnkosher];
         
         // load sounds
         // success sound by "grunz" from http://www.freesound.org/people/grunz/sounds/109662/
@@ -64,14 +75,68 @@
     [foodObjectTypes release];
     [foodAreas release];
     [foodObjects release];
+    [foodAreaOverlay release];
 
     [super dealloc];
 }
 
 #pragma mark public methods
 
+-(void)loadFoodAreas {
+    // kosher areas
+    [self setFoodArea:CGRectMake(0.0f, 0.0f, 0.333f, 0.666f)     forType:kKashrutGameFoodTypeDairy];
+    [self setFoodArea:CGRectMake(0.333f, 0.0f, 0.333f, 0.666f)   forType:kKashrutGameFoodTypeNeutral];
+    [self setFoodArea:CGRectMake(0.666f, 0.0f, 0.333f, 0.666f)   forType:kKashrutGameFoodTypeMeat];
+    
+    // unkosher area
+    [self setFoodArea:CGRectMake(0.0f, 0.666f, 1.0f, 0.333f) forType:kKashrutGameFoodTypeUnkosher];
+}
+
 -(void)setFoodArea:(CGRect)area forType:(KashrutGameFoodType)type {
     [foodAreas setObject:[NSValue valueWithCGRect:area] forKey:[NSNumber numberWithInt:type]];
+    
+    // remove old area overlay if existent
+    UIView *foundArea = nil;
+    for (UIView *area in foodAreaOverlay.subviews) {
+        if (area.tag == type) {
+            foundArea = area;
+            break;
+        }
+    }
+    
+    [foundArea removeFromSuperview];
+    
+    // create area overlay
+    CGSize s = foodAreaOverlay.frame.size;
+    CGRect areaRect = CGRectMake(s.width * area.origin.x,
+        s.height * area.origin.y,
+        s.width * area.size.width,
+        s.height * area.size.height);
+
+    UIView *areaOverlay = [[[UIView alloc] initWithFrame:areaRect] autorelease];
+    [areaOverlay setTag:type];
+    [areaOverlay setAlpha:0.5f];
+    [areaOverlay setBackgroundColor:[kFoodAreaColors objectAtIndex:type]];
+    
+    [foodAreaOverlay addSubview:areaOverlay];
+}
+
+-(void)setCore:(TUIFrontendCore *)c {
+    core = c;
+
+    [foodAreaOverlay setFrame:CGRectMake(0, 0, core.rootView.frame.size.height, core.rootView.frame.size.width)];
+}
+
+-(void)toggleDisplay {
+    [foodAreaOverlay setHidden:!foodAreaOverlay.hidden];
+}
+
+-(void)displayFoodAreaOverlay {
+    [foodAreaOverlay setHidden:NO];
+}
+
+-(void)hideFoodAreaOverlay {
+    [foodAreaOverlay setHidden:YES];
 }
 
 #pragma mark TUIObjectObserver methods
