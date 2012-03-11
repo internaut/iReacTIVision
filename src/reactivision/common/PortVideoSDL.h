@@ -1,5 +1,7 @@
 /*  reacTIVision fiducial tracking framework
 	Copyright (C) 2005-2008 Martin Kaltenbrunner <mkalten@iua.upf.edu>
+    
+    Modified by Markus Konrad <post@mkonrad.net>
  
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by

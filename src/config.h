@@ -3,7 +3,7 @@
 //  DemosiPhoneOS
 //
 //  Created by Markus Konrad on 05.11.11.
-//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2011 Licensed under GPL.. All rights reserved.
 //
 
 #ifndef config_h

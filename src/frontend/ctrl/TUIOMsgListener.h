@@ -3,7 +3,7 @@
 //  iReacTIVision
 //
 //  Created by Markus Konrad on 23.02.12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012 Markus Konrad <post@mkonrad.net>. Licensed under GPL.
 //
 
 #include "OscPacketListener.h"
@@ -11,38 +11,42 @@
 #ifndef iReacTIVision_TUIOMsgListener_h
 #define iReacTIVision_TUIOMsgListener_h
 
-typedef enum {
-    kTUIOMsgTypeObj = 0,
-    kTUIOMsgTypeCur,
-    kTUIOMsgTypeBlb
+// TUIO message format of protocol version 1.1.
+
+typedef enum {  // message type
+    kTUIOMsgTypeObj = 0,    // tagged object
+    kTUIOMsgTypeCur,        // cursor / touch
+    kTUIOMsgTypeBlb         // blob
 } TUIOMsgType;
 
-typedef enum {
-    kTUIOMsgCmdSrc = 0,
-    kTUIOMsgCmdAlive,
-    kTUIOMsgCmdSet,
-    kTUIOMsgCmdFSeq
+
+typedef enum {  // message command
+    kTUIOMsgCmdSrc = 0,     // message source
+    kTUIOMsgCmdAlive,       // alive message with list of session ids for each recognized object
+    kTUIOMsgCmdSet,         // set message with session id and further parameters for this object
+    kTUIOMsgCmdFSeq         // unique frame sequence number
 } TUIOMsgCmd;
 
-typedef struct {
+typedef struct {    // 2d vector
     float x;
     float y;
 } TUIOMsgVec;
 
+// TUIO message for each object type and command
 typedef struct _TUIOMsg {
-    TUIOMsgType type;
-    TUIOMsgCmd cmd;
+    TUIOMsgType type;   // type can be "obj" (tagged object), "cur" (cursor/touch) or "blb" (blob)
+    TUIOMsgCmd cmd;     // command can be "source", "alive", "set" or "fseq"
     union _data {
         struct {    // for cmd = "source"
-            char * addr;
+            char * addr;    // string with source host
         } source;
         struct {    // for cmd = "alive"
-            int * sessIds;
-            unsigned int numSessIds;
+            int * sessIds;  // array with length of "numSessIds"
+            unsigned int numSessIds;    // number of session ids
         } alive;
         struct {    // for cmd = "set"
-            int sessId;
-            int classId;
+            int sessId;         // session id
+            int classId;        // fiducial marker id
             TUIOMsgVec pos;
             float angle;
             TUIOMsgVec size;
@@ -53,7 +57,7 @@ typedef struct _TUIOMsg {
             float rotAccel;
         } set;
         struct {    // for cmd = "fseq"
-            int frameId;
+            int frameId;    // unique frame seq. number
         } fseq;
     } data;
     

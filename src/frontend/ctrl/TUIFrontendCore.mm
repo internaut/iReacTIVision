@@ -3,7 +3,7 @@
 //  iReacTIVision
 //
 //  Created by Markus Konrad on 23.02.12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012 Markus Konrad <post@mkonrad.net>. Licensed under GPL.
 //
 
 #import "TUIFrontendCore.h"
@@ -49,8 +49,10 @@ void TUIOMsgCallbackFunction(TUIOMsg *msg) {
         tuiObjectObservers = [[NSMutableSet alloc] init];
         
         // create controls view overlay
+#ifdef DEBUG
         controlsView = [[ControlsView alloc] init];
         [controlsView setCore:self];
+#endif
         
         // get the application root view controller and root view
         UIApplication *uiApp = [UIApplication sharedApplication];
@@ -58,8 +60,10 @@ void TUIOMsgCallbackFunction(TUIOMsg *msg) {
         rootViewCtrl = uiWin.rootViewController;
         rootView = rootViewCtrl.view;
         
+#ifdef DEBUG        
         // add the controls view overlay
         [rootView addSubview:controlsView];
+#endif
         
         // set observers
         frontendApp = [[KashrutGame alloc] init];
@@ -67,10 +71,12 @@ void TUIOMsgCallbackFunction(TUIOMsg *msg) {
         [self addTUIObjectObserver:frontendApp];
         
         [frontendApp loadFoodAreas];
-        [frontendApp displayFoodAreaOverlay];
         
         // add a subview
+#ifdef DEBUG
+        [frontendApp displayFoodAreaOverlay];
         [rootView insertSubview:frontendApp.foodAreaOverlay belowSubview:controlsView];
+#endif
     }
 
     return self;

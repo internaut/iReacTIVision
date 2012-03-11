@@ -3,7 +3,7 @@
 //  LibraryAgent
 //
 //  Created by Markus Konrad on 01.11.11.
-//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012 Markus Konrad <post@mkonrad.net>. Licensed under GPL.
 //
 
 #import <Foundation/Foundation.h>

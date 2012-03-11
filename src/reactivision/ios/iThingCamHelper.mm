@@ -3,7 +3,7 @@
 //  reacTIViOS
 //
 //  Created by Markus Konrad on 11.10.11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012 Markus Konrad <post@mkonrad.net>. Licensed under GPL.
 //
 
 #import "iThingCamHelper.h"

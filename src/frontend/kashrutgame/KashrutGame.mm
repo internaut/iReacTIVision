@@ -3,7 +3,7 @@
 //  iReacTIVision
 //
 //  Created by Markus Konrad on 25.02.12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012 Markus Konrad <post@mkonrad.net>. Licensed under GPL.
 //
 
 #import "KashrutGame.h"
@@ -83,6 +83,8 @@ static NSArray * const kFoodAreaColors = [NSArray arrayWithObjects:
 #pragma mark public methods
 
 -(void)loadFoodAreas {
+    // reacTIVision coordinates have always a range of 0.0f .. 1.0f
+
     // kosher areas
     [self setFoodArea:CGRectMake(0.0f, 0.0f, 0.333f, 0.666f)     forType:kKashrutGameFoodTypeDairy];
     [self setFoodArea:CGRectMake(0.333f, 0.0f, 0.333f, 0.666f)   forType:kKashrutGameFoodTypeNeutral];

@@ -2,8 +2,10 @@
 //  main.m
 //  reacTIViOS
 //
-//  Created by Markus Konrad on 11.10.11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Original code from reacTIVision. See http://reactivision.sourceforge.net/.
+//
+//  Modified by Markus Konrad on 11.10.11.
+//  Copyright (c) 2012 Markus Konrad <post@mkonrad.net>. Licensed under GPL.
 //
 
 #import <UIKit/UIKit.h>
@@ -382,7 +384,11 @@ int main(int argc, char *argv[]) {
     TUIFrontendCore *frontendCore = [TUIFrontendCore shared];
     [frontendCore setEngine:engine];
     [frontendCore start];
+#ifdef DEBUG
     engine->setDisplayMode(MessageListener::SOURCE_DISPLAY);
+#else
+    engine->setDisplayMode(MessageListener::NO_DISPLAY);
+#endif
 #endif
 
 	engine->run();

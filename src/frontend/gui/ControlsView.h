@@ -3,7 +3,7 @@
 //  iReacTIVision
 //
 //  Created by Markus Konrad on 15.02.12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012 Markus Konrad <post@mkonrad.net>. Licensed under GPL.
 //
 
 #import <UIKit/UIKit.h>
