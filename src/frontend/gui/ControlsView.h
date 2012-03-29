@@ -9,25 +9,32 @@
 #import <UIKit/UIKit.h>
 
 #import "TUIFrontendCore.h"
+#import "ControlsTouchLayer.h"
 
 #include "PortVideoSDL.h"
 
 typedef enum {
     kCtrlViewModeDefault = 0,
-    kCtrlViewModeCalib
+    kCtrlViewModeCalib,
+    kCtrlViewModeCalibFullscreen,
 } ctrlViewMode;
 
 @class TUIFrontendCore;
+@class ControlsTouchLayer;
 
 @interface ControlsView : UIView {
     ctrlViewMode viewMode;
     UIView *calibView;
     UILabel *fpsLabel;
+    
+    ControlsTouchLayer *touchLayer;
 }
 
 @property (nonatomic,assign) PortVideoSDL *videoEngine;
 @property (nonatomic,assign) TUIFrontendCore *core;
 
 -(void)updateFpsLabel:(int)fpsValue;
+
+-(void)stopFullscreenCalibrating;
 
 @end

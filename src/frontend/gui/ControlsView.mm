@@ -13,7 +13,7 @@
 #include <SDL.h>
 
 static const CGRect kControlsViewMiniFrame = CGRectMake(0, 0, 1024, 50);
-static const CGRect kControlsViewMaxiFrame = CGRectMake(0, 0, 1024, 200);
+static const CGRect kControlsViewMaxiFrame = CGRectMake(0, 0, 1024, 150);
 
 enum {
     kCalibMoveGridUp = 0,
@@ -35,7 +35,7 @@ enum {
 -(void)calibResetPointAction:(id)sender;
 -(void)calibRevertAction:(id)sender;
 
--(void)calibMoveAction:(id)sender;
+-(void)calibStartAction:(id)sender;
 
 -(void)switchCamsAction:(id)sender;
 
@@ -67,6 +67,7 @@ enum {
 }
 
 -(void)dealloc {
+    [touchLayer release];
     [calibView release];
     [fpsLabel release];
 
@@ -79,11 +80,17 @@ enum {
     [fpsLabel setText:[NSString stringWithFormat:@"%d", fpsValue]];
 }
 
-#pragma mark ui actions
-
--(void)calibrateAction:(id)sender {    
+-(void)stopFullscreenCalibrating {
+    viewMode = kCtrlViewModeCalib;
+    
     [self simulateKeyboardHit:SDLK_c];
     
+    [self updateView];
+}
+
+#pragma mark ui actions
+
+-(void)calibrateAction:(id)sender {        
     // toggle view modes
     viewMode = (viewMode != kCtrlViewModeCalib) ? kCtrlViewModeCalib : kCtrlViewModeDefault;
     
@@ -102,22 +109,30 @@ enum {
     [self simulateKeyboardHit:SDLK_l];    
 }
 
--(void)calibMoveAction:(id)sender {
-    UIButton *btn = sender;
+-(void)calibStartAction:(id)sender {
+    [self simulateKeyboardHit:SDLK_c];
 
-    SDL_Keycode key = 0;
-    
-    switch (btn.tag) {
-        case kCalibMoveGridUp:
-            key = 275;
-        break;
+    viewMode = kCtrlViewModeCalibFullscreen;
 
-        default:
-        break;
-    }
-    
-    if (key != 0) [self simulateKeyboardHit:key];        
+    [self updateView];    
 }
+
+//-(void)calibMoveAction:(id)sender {
+//    UIButton *btn = sender;
+//
+//    SDL_Keycode key = 0;
+//    
+//    switch (btn.tag) {
+//        case kCalibMoveGridUp:
+//            key = 275;
+//        break;
+//
+//        default:
+//        break;
+//    }
+//    
+//    if (key != 0) [self simulateKeyboardHit:key];        
+//}
 
 -(void)switchCamsAction:(id)sender {
     iThingCamera *camController = (iThingCamera *)videoEngine->camera_;
@@ -162,9 +177,8 @@ enum {
     
     [self createButton:@"reset grid" frame:CGRectMake(0, 0, 90, 30) action:@selector(calibResetGridAction:) parent:calibView];
     [self createButton:@"reset point" frame:CGRectMake(0, 40, 90, 30) action:@selector(calibResetPointAction:) parent:calibView];
-    [self createButton:@"revert" frame:CGRectMake(0, 80, 90, 30) action:@selector(calibRevertAction:) parent:calibView];
-    
-    [self createButton:@"⬆" frame:CGRectMake(100, 80, 30, 30) action:@selector(calibMoveAction:) parent:calibView tag:kCalibMoveGridUp type:UIButtonTypeCustom];
+    [self createButton:@"revert" frame:CGRectMake(100, 0, 90, 30) action:@selector(calibRevertAction:) parent:calibView];
+    [self createButton:@"start calib (double tap to leave again!)" frame:CGRectMake(100, 40, 300, 30) action:@selector(calibStartAction:) parent:calibView];
     
     [self setExclusiveTouch:NO];
     [self addSubview:calibView];
@@ -197,14 +211,40 @@ enum {
 -(void)updateView {
     switch (viewMode) {
         default:
-        case kCtrlViewModeDefault:
+        case kCtrlViewModeDefault: {
+            [touchLayer removeFromSuperview];
+            [touchLayer release];
+            touchLayer = nil;
+        
+            [self setHidden:NO];
             [calibView setHidden:YES];
             [self setFrame:kControlsViewMiniFrame];
+        }
         break;
         
-        case kCtrlViewModeCalib:
+        case kCtrlViewModeCalib: {
+            [touchLayer removeFromSuperview];
+            [touchLayer release];
+            touchLayer = nil;
+        
             [self setFrame:kControlsViewMaxiFrame];
+            [self setHidden:NO];
             [calibView setHidden:NO];
+        }
+        break;
+        
+        case kCtrlViewModeCalibFullscreen: {
+            [self setHidden:YES];
+            
+            [touchLayer removeFromSuperview];
+            [touchLayer release];
+            
+            CGRect touchFrame = CGRectMake(0, 0, 1024, 768);
+            touchLayer = [[ControlsTouchLayer alloc] initWithFrame:touchFrame];
+            [touchLayer setControlsView:self];
+            
+            [self.superview addSubview:touchLayer];
+        }
         break;
     }
 }

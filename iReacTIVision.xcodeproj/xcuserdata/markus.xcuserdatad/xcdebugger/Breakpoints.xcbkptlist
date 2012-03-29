@@ -137,9 +137,7 @@
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "118"
-         endingLineNumber = "118"
-         landmarkName = "PortVideoSDL::run()"
-         landmarkType = "5">
+         endingLineNumber = "118">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -207,12 +205,10 @@
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "299"
-         endingLineNumber = "299"
-         landmarkName = "PortVideoSDL::frameStatistics(long cameraTime, long processingTime, long totalTime)"
-         landmarkType = "5">
+         endingLineNumber = "299">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
@@ -224,6 +220,19 @@
          endingLineNumber = "125"
          landmarkName = "@implementation KashrutGame"
          landmarkType = "3">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "src/frontend/gui/ControlsTouchLayer.mm"
+         timestampString = "354713758.913835"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "53"
+         endingLineNumber = "53"
+         landmarkName = "-doubleTapAction:"
+         landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
 </Bucket>

@@ -11,6 +11,7 @@
 		28400B4014F675910028C19C /* TUIFrontendCore.mm in Sources */ = {isa = PBXBuildFile; fileRef = 28400B3F14F675910028C19C /* TUIFrontendCore.mm */; };
 		28476D5E14F92BD6002DCFB0 /* KashrutGame.mm in Sources */ = {isa = PBXBuildFile; fileRef = 28476D5D14F92BD6002DCFB0 /* KashrutGame.mm */; };
 		28476D6114F92CC6002DCFB0 /* KashrutFoodObject.mm in Sources */ = {isa = PBXBuildFile; fileRef = 28476D6014F92CC6002DCFB0 /* KashrutFoodObject.mm */; };
+		284A864B1520B30E000A7012 /* ControlsTouchLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 284A864A1520B30E000A7012 /* ControlsTouchLayer.mm */; };
 		285664A514FA9C0500A79B18 /* SoundUtil.mm in Sources */ = {isa = PBXBuildFile; fileRef = 285664A414FA9C0500A79B18 /* SoundUtil.mm */; };
 		285664C214FAA84300A79B18 /* camera.xml in Resources */ = {isa = PBXBuildFile; fileRef = 285664AF14FAA84300A79B18 /* camera.xml */; };
 		285664C814FAA84300A79B18 /* reacTIVision.xml in Resources */ = {isa = PBXBuildFile; fileRef = 285664B614FAA84300A79B18 /* reacTIVision.xml */; };
@@ -104,6 +105,8 @@
 		28476D5F14F92CC6002DCFB0 /* KashrutFoodObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = KashrutFoodObject.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		28476D6014F92CC6002DCFB0 /* KashrutFoodObject.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; lineEnding = 0; path = KashrutFoodObject.mm; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		28476D6214F937C0002DCFB0 /* KashrutGameTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = KashrutGameTypes.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		284A86491520B30E000A7012 /* ControlsTouchLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlsTouchLayer.h; sourceTree = "<group>"; };
+		284A864A1520B30E000A7012 /* ControlsTouchLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ControlsTouchLayer.mm; sourceTree = "<group>"; };
 		285664A314FA9C0500A79B18 /* SoundUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = SoundUtil.h; path = src/frontend/kashrutgame/SoundUtil.h; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		285664A414FA9C0500A79B18 /* SoundUtil.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; lineEnding = 0; name = SoundUtil.mm; path = src/frontend/kashrutgame/SoundUtil.mm; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		285664AF14FAA84300A79B18 /* camera.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = camera.xml; sourceTree = "<group>"; };
@@ -312,6 +315,8 @@
 			children = (
 				28BF476E150808FE007097CA /* ControlsView.h */,
 				28BF476F150808FE007097CA /* ControlsView.mm */,
+				284A86491520B30E000A7012 /* ControlsTouchLayer.h */,
+				284A864A1520B30E000A7012 /* ControlsTouchLayer.mm */,
 			);
 			path = gui;
 			sourceTree = "<group>";
@@ -658,7 +663,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				ORGANIZATIONNAME = mkonrad.net;
+				ORGANIZATIONNAME = "mkonrad.net. Licensed under GPL.";
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "iReacTIVision" */;
 			compatibilityVersion = "Xcode 3.1";
@@ -764,6 +769,7 @@
 				28476D6114F92CC6002DCFB0 /* KashrutFoodObject.mm in Sources */,
 				285664A514FA9C0500A79B18 /* SoundUtil.mm in Sources */,
 				28BF4770150808FE007097CA /* ControlsView.mm in Sources */,
+				284A864B1520B30E000A7012 /* ControlsTouchLayer.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -846,7 +852,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = iReacDebug;
-				PROVISIONING_PROFILE = "FEEA8E1C-CBAC-43C9-B8E6-209AEF21AA44";
+				PROVISIONING_PROFILE = "6F39A978-C10D-465E-87B3-8F14D8AF30BA";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -871,7 +877,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = iReacTIVision;
-				PROVISIONING_PROFILE = "FEEA8E1C-CBAC-43C9-B8E6-209AEF21AA44";
+				PROVISIONING_PROFILE = "6F39A978-C10D-465E-87B3-8F14D8AF30BA";
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
 			};
