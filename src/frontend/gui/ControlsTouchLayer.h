@@ -10,10 +10,17 @@
 
 #import "ControlsView.h"
 
+#include "CalibrationEngine.h"
+#include "CalibrationGrid.h"
+
 @class ControlsView;
 
 @interface ControlsTouchLayer : UIView {
-
+    CalibrationEngine *calibrator;
+    CalibrationGrid *grid;
+    
+    int gridW;
+    int gridH;
 }
 
 @property (nonatomic,assign) ControlsView *controlsView;

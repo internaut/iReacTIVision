@@ -383,6 +383,7 @@ int main(int argc, char *argv[]) {
 #ifdef IOS    
     TUIFrontendCore *frontendCore = [TUIFrontendCore shared];
     [frontendCore setEngine:engine];
+    [frontendCore setCalibrator:(CalibrationEngine *)calibrator];
     [frontendCore start];
 #ifdef DEBUG
     engine->setDisplayMode(MessageListener::SOURCE_DISPLAY);

@@ -17,6 +17,7 @@
 #include "TUIOMsgListener.h"
 #include "UdpSocket.h"
 #include "PortVideoSDL.h"
+#include "CalibrationEngine.h"
 
 @class ControlsView;
 @class KashrutGame;
@@ -35,11 +36,14 @@
 
 @property (nonatomic,assign) int port;
 @property (nonatomic,assign) PortVideoSDL *engine;
+@property (nonatomic,assign) CalibrationEngine *calibrator;
 @property (atomic,readonly) NSDictionary *tuiObjects;
 @property (nonatomic,readonly) SoundUtil *sound;
 @property (nonatomic,readonly) ControlsView *controlsView;
 @property (nonatomic,readonly) UIViewController *rootViewCtrl;
 @property (nonatomic,readonly) UIView *rootView;
+@property (nonatomic,readonly) CGSize screenSize;
+@property (nonatomic,readonly) CGPoint screenCenter;
 
 -(void)start;
 -(void)stop;

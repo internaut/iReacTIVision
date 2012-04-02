@@ -12,8 +12,8 @@
 
 #include <SDL.h>
 
-static const CGRect kControlsViewMiniFrame = CGRectMake(0, 0, 1024, 50);
-static const CGRect kControlsViewMaxiFrame = CGRectMake(0, 0, 1024, 150);
+static const CGFloat kControlsViewMiniHeight = 50.0f;
+static const CGFloat kControlsViewMaxiHeight = 150.0f;
 
 enum {
     kCalibMoveGridUp = 0,
@@ -54,14 +54,12 @@ enum {
 
 - (id)init
 {
-    self = [super initWithFrame:kControlsViewMaxiFrame];
+    self = [super init];
     if (self) {
         viewMode = kCtrlViewModeDefault;
     
         [self setBackgroundColor:[UIColor blackColor]];
         [self setAlpha:0.75f];
-                
-        [self createSubviews];
     }
     return self;
 }
@@ -75,6 +73,17 @@ enum {
 }
 
 #pragma mark public methods
+
+-(void)setCore:(TUIFrontendCore *)c {
+    [self setFrame:CGRectMake(0, 0, c.screenSize.width, kControlsViewMaxiHeight)];
+    
+    if (!core) {
+        core = c;
+        [self createSubviews];
+    } else {
+        core = c;
+    }
+}
 
 -(void)updateFpsLabel:(int)fpsValue {
     [fpsLabel setText:[NSString stringWithFormat:@"%d", fpsValue]];
@@ -209,6 +218,8 @@ enum {
 }
 
 -(void)updateView {
+    CGSize screenSize = [core screenSize];
+
     switch (viewMode) {
         default:
         case kCtrlViewModeDefault: {
@@ -218,7 +229,7 @@ enum {
         
             [self setHidden:NO];
             [calibView setHidden:YES];
-            [self setFrame:kControlsViewMiniFrame];
+            [self setFrame:CGRectMake(0, 0, screenSize.width, kControlsViewMiniHeight)];
         }
         break;
         
@@ -227,7 +238,7 @@ enum {
             [touchLayer release];
             touchLayer = nil;
         
-            [self setFrame:kControlsViewMaxiFrame];
+            [self setFrame:CGRectMake(0, 0, screenSize.width, kControlsViewMaxiHeight)];
             [self setHidden:NO];
             [calibView setHidden:NO];
         }
@@ -239,7 +250,7 @@ enum {
             [touchLayer removeFromSuperview];
             [touchLayer release];
             
-            CGRect touchFrame = CGRectMake(0, 0, 1024, 768);
+            CGRect touchFrame = CGRectMake(0, 0, screenSize.width, screenSize.height);
             touchLayer = [[ControlsTouchLayer alloc] initWithFrame:touchFrame];
             [touchLayer setControlsView:self];
             

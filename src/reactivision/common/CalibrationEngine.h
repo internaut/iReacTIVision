@@ -45,6 +45,9 @@ public:
 	
 	void setFlag(int flag, bool value);
 	void toggleFlag(int flag);
+    
+    CalibrationGrid *getGrid() { return grid; }
+    void setActiveGridPoint(int x, int y) { grid_xpos = x; grid_ypos = y; }
 	
 private:
 	CalibrationGrid *grid;

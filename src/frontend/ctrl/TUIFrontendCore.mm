@@ -28,11 +28,14 @@ void TUIOMsgCallbackFunction(TUIOMsg *msg) {
 
 @synthesize port;
 @synthesize engine;
+@synthesize calibrator;
 @synthesize tuiObjects;
 @synthesize sound;
 @synthesize controlsView;
 @synthesize rootView;
 @synthesize rootViewCtrl;
+@synthesize screenSize;
+@synthesize screenCenter;
 
 #pragma mark init/dealloc
 
@@ -42,6 +45,20 @@ void TUIOMsgCallbackFunction(TUIOMsg *msg) {
     if (self) {
         // initialize with defaults
         port = 3333;
+        
+        screenSize = [UIScreen mainScreen].bounds.size;
+        if (screenSize.width < screenSize.height) {
+            CGFloat h = screenSize.height;
+            screenSize.height = screenSize.width;
+            screenSize.width = h;
+        }
+        screenCenter = CGPointMake(screenSize.width / 2.0f, screenSize.height / 2.0f);
+        
+        // get the application root view controller and root view
+        UIApplication *uiApp = [UIApplication sharedApplication];
+        UIWindow *uiWin = [uiApp.windows objectAtIndex:0];
+        rootViewCtrl = uiWin.rootViewController;
+        rootView = rootViewCtrl.view;
         
         // create objects
         sound = [SoundUtil shared];
@@ -53,12 +70,6 @@ void TUIOMsgCallbackFunction(TUIOMsg *msg) {
         controlsView = [[ControlsView alloc] init];
         [controlsView setCore:self];
 #endif
-        
-        // get the application root view controller and root view
-        UIApplication *uiApp = [UIApplication sharedApplication];
-        UIWindow *uiWin = [uiApp.windows objectAtIndex:0];
-        rootViewCtrl = uiWin.rootViewController;
-        rootView = rootViewCtrl.view;
         
 #ifdef DEBUG        
         // add the controls view overlay
