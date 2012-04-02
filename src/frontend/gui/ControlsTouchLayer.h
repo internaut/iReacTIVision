@@ -21,6 +21,9 @@
     
     int gridW;
     int gridH;
+    
+    BOOL gridPointSelected;
+    CGPoint selectedGridPoint;
 }
 
 @property (nonatomic,assign) ControlsView *controlsView;

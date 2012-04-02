@@ -8,7 +8,7 @@
 
 #import "ControlsTouchLayer.h"
 
-static const float kMaxTouchDistance = 50.0f;
+static const float kMaxTouchDistance = 35.0f;
 
 @interface ControlsTouchLayer()
 -(void)doubleTapAction:(UIGestureRecognizer *)sender;
@@ -25,6 +25,8 @@ static const float kMaxTouchDistance = 50.0f;
 -(id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
+        gridPointSelected = NO;
+        
         [self setMultipleTouchEnabled:YES];
         [self setUserInteractionEnabled:YES];
         [self setExclusiveTouch:YES];
@@ -47,6 +49,8 @@ static const float kMaxTouchDistance = 50.0f;
 #pragma mark custom setter/getter
 
 -(void)setControlsView:(ControlsView *)c {
+    controlsView = c;
+
     calibrator = c.core.calibrator;
     grid = calibrator->getGrid();
     gridW = grid->GetWidth();
@@ -60,6 +64,7 @@ static const float kMaxTouchDistance = 50.0f;
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     UITouch *uiTouch = [touches anyObject];
     CGPoint t = [uiTouch locationInView:self];
+    BOOL found = NO;
     
     for (int y = 0; y < gridH; y++) {
         for (int x = 0; x < gridW; x++) {
@@ -76,15 +81,51 @@ static const float kMaxTouchDistance = 50.0f;
                 
                 calibrator->setActiveGridPoint(x, y);
                 
-                return;
+                selectedGridPoint = CGPointMake(x, y);
+                
+                found = YES;
+                break;
             }
         }
+        
+        if (found) break;
     }
+    
+    gridPointSelected = found;
     
     [super touchesBegan:touches withEvent:event];
 }
 
+-(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+    if (gridPointSelected) {
+        UITouch *uiTouch = [touches anyObject];
+        CGPoint t = [uiTouch locationInView:self];
+        
+        CGPoint g = [self convertGridPoint:selectedGridPoint offset:CGPointZero];
+        
+        float dX = t.x - g.x;
+        float dY = t.y - g.y;
+        
+        CGSize screenSize = [[TUIFrontendCore shared] screenSize];
+
+        float stepX = (float)(gridW - 1) / screenSize.width;
+        float stepY = (float)(gridH - 1) / screenSize.height;
+        
+        grid->Set(selectedGridPoint.x, selectedGridPoint.y, dX * stepX, dY * stepY);
+    }
+
+    [super touchesMoved:touches withEvent:event];
+}
+
+-(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    gridPointSelected = NO;
+
+    [super touchesEnded:touches withEvent:event];
+}
+
 -(void)doubleTapAction:(UIGestureRecognizer *)sender {
+    NSLog(@"ControlsTouchLayer: Double tap -> exit!");
+
     [controlsView stopFullscreenCalibrating];
 }
 

@@ -92,8 +92,6 @@ enum {
 -(void)stopFullscreenCalibrating {
     viewMode = kCtrlViewModeCalib;
     
-    [self simulateKeyboardHit:SDLK_c];
-    
     [self updateView];
 }
 
@@ -102,6 +100,8 @@ enum {
 -(void)calibrateAction:(id)sender {        
     // toggle view modes
     viewMode = (viewMode != kCtrlViewModeCalib) ? kCtrlViewModeCalib : kCtrlViewModeDefault;
+    
+    [self simulateKeyboardHit:SDLK_c];
     
     [self updateView];
 }
@@ -119,8 +119,6 @@ enum {
 }
 
 -(void)calibStartAction:(id)sender {
-    [self simulateKeyboardHit:SDLK_c];
-
     viewMode = kCtrlViewModeCalibFullscreen;
 
     [self updateView];    
@@ -185,9 +183,9 @@ enum {
     [calibView setUserInteractionEnabled:YES];
     
     [self createButton:@"reset grid" frame:CGRectMake(0, 0, 90, 30) action:@selector(calibResetGridAction:) parent:calibView];
-    [self createButton:@"reset point" frame:CGRectMake(0, 40, 90, 30) action:@selector(calibResetPointAction:) parent:calibView];
+//    [self createButton:@"reset point" frame:CGRectMake(0, 40, 90, 30) action:@selector(calibResetPointAction:) parent:calibView];
     [self createButton:@"revert" frame:CGRectMake(100, 0, 90, 30) action:@selector(calibRevertAction:) parent:calibView];
-    [self createButton:@"start calib (double tap to leave again!)" frame:CGRectMake(100, 40, 300, 30) action:@selector(calibStartAction:) parent:calibView];
+    [self createButton:@"start calib (double tap to leave again!)" frame:CGRectMake(0, 40, 300, 30) action:@selector(calibStartAction:) parent:calibView];
     
     [self setExclusiveTouch:NO];
     [self addSubview:calibView];
