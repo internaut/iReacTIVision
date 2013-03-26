@@ -11,4 +11,4 @@ More information can be found [on a dedicated project page](http://mkonrad.net/P
 Supported devices
 -----------------
 
-So far, the software only was tested on Apple's iPad 2, but should also run on an iPhone or other iOS devices (with small modifications).
+So far, the software was tested on Apple's iPad (2nd and 3rd generation), but should also run on an iPhone or other iOS devices (with small modifications).
